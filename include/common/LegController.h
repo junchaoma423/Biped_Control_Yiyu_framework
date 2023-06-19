@@ -23,11 +23,15 @@
 
         void zero();
 
-        Vec3<double> qDes, qdDes, tau, pDes, vDes;
-        Mat3<double> kpJoint, kdJoint;
-        Vec3<double> feedforwardForce;
+        Vec5<double> qDes, qdDes, tau;
+        Vec3<double> pDes, vDes;
+        Mat5<double> kpJoint, kdJoint;
+        Vec6<double> feedforwardForce;
+        Vec3<double> hiptoeforce;
         Mat3<double> kpCartesian;
         Mat3<double> kdCartesian;
+        double kptoe;
+        double kdtoe;
     };
 
 /*!
@@ -35,14 +39,15 @@
  */ 
     struct LegControllerData{
         LegControllerData() {zero();}
-        void setQuadruped(Quadruped& quad) { aliengo = &quad; }
+        void setQuadruped(Quadruped& quad) { A1 = &quad; }
 
         void zero();
-        Vec3<double> q, qd;
-        Vec3<double> p, v;
-        Mat3<double> J;
-        Vec3<double> tau;
-        Quadruped* aliengo;
+        Vec5<double> q, qd, qDes;
+        Vec3<double> p, v, pDes;
+        Mat65<double> J;
+        Mat35<double> J2;
+        Vec5<double> tau;
+        Quadruped* A1;
     };
 
 /*!
@@ -52,7 +57,7 @@
       public:
         LegController(Quadruped& quad) : _quadruped(quad) {
             for (auto& dat : data) dat.setQuadruped(_quadruped);
-            for(int i = 0; i<4; i++){
+            for(int i = 0; i<2; i++){
                 commands[i].zero();
                 data[i].zero();
             //    commands[i].kdCartesian << 100, 0, 0, 0, 100, 0, 0 ,0, 100;
@@ -60,15 +65,16 @@
             }
         };
         
+        void stand();
         void zeroCommand();
         void edampCommand(double gain);
         void updateData(const LowlevelState* state);
         void updateCommand(LowlevelCmd* cmd);
-        void setEnabled(bool enabled) {_legsEnabled = enabled;};
+        void setEnabled(bool enabled) {_legsEnabled = enabled;};    // Don't know what does this do
 
 
-        LegControllerCommand commands[4];
-        LegControllerData data[4];
+        LegControllerCommand commands[2];
+        LegControllerData data[2];
         bool _legsEnabled = false;
         /*!
         * compute foot jacobian and position in leg frame
@@ -78,9 +84,9 @@
         //ros::NodeHandle n;
     };
 
-    void computeLegJacobianAndPosition(Quadruped& _quad, Vec3<double>& q, Mat3<double>* J,
+    void computeLegJacobianAndPosition(Quadruped& _quad, Vec5<double>& q, Mat65<double>* J, Mat35<double>* J2,
                                        Vec3<double>* p, int leg);
 
-    void computeInverseKinematics(Quadruped& _quad, Vec3<double>& pDes, int leg, Vec3<double>* qDes);
+    // void computeInverseKinematics(Quadruped& _quad, Vec3<double>& pDes, int leg, Vec3<double>* qDes);
 
 #endif

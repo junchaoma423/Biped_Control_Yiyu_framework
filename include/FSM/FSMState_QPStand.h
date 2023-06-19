@@ -38,6 +38,11 @@ class FSMState_QPStand: public FSMState
         double b_control[6];
         double init_yaw;
 
+        Vec3<double> fOptR;
+        Vec3<double> fOptO;
+        Vec3<double> mOptR;
+        Vec3<double> mOptO;
+
         // Saturation
         double _rollMax, _rollMin;
         double _pitchMax, _pitchMin;

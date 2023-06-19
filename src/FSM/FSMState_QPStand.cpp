@@ -86,6 +86,34 @@ void FSMState_QPStand::enter()
         p_des[2] = 0.4;
         balanceController.Ig << 0.1831 , 0, 0, 0, 0.7563, 0, 0, 0, 0.7837; 
     }
+
+    else if(_data->_quadruped->robot_index == 4){
+        for(int i = 0; i < 3; i++)
+        {
+            p_des[i] = _data->_stateEstimator->getResult().position[i];
+            rpy[i] = 0;
+        }
+
+        // Set the Translational Gains
+        kpCOM[0] = 50;
+        kdCOM[0] = 1;
+        kpCOM[1] = 20;
+        kdCOM[1] = 1;
+        kpCOM[2] = 200;
+        kdCOM[2] = 1;
+
+        // Set the Orientational Gains
+        kpBase[0] = 800;
+        kdBase[0] = 10;
+        kpBase[1] = 750;
+        kdBase[1] = 10;
+        kpBase[2] = 350;
+        kdBase[2] = 15;
+
+        rpy[2] = init_yaw;
+        p_des[2] = 0.49;
+        balanceController.Ig << 0.0463619, 0, 0, 0, 0.056636, 0, 0, 0, 0.024569;
+    }
     else{
         std::cout << "robot not defined for QP controller" << std::endl;
         exit();
@@ -118,27 +146,28 @@ void FSMState_QPStand::run()
         se_xfb[10 + i] = _data->_stateEstimator->getResult().vWorld(i);
       }
 
-          Vec3<double> pFeetVecCOM;
+    Vec3<double> pFeetVecCOM;
 
     // Get the foot locations relative to COM
-    for (int leg = 0; leg < 4; leg++) {
+    for (int leg = 0; leg < 2; leg++) {
         pFeetVecCOM =  _data->_stateEstimator->getResult().rBody.transpose() *
-        (_data->_quadruped->getHipLocation(leg) + _data->_legController->data[leg].p);
+        (_data->_quadruped->getHip2Location(leg) + _data->_legController->data[leg].p);
 
         pFeet[leg * 3] = pFeetVecCOM[0];
         pFeet[leg * 3 + 1] = pFeetVecCOM[1];
         pFeet[leg * 3 + 2] = pFeetVecCOM[2];
         //std::cout << "pFeet" << leg << std::endl;
     }
+    p_des[0] = p_act[0] + (pFeet[0] + pFeet[3])/2;
 
-    rpy[0] = (double)invNormalize(_userValue.lx, _rollMin, _rollMax);
-    rpy[1] = (double)invNormalize(_userValue.ly, _pitchMin, _pitchMax);
-    rpy[2] = init_yaw + (double)invNormalize(_userValue.rx, _yawMin, _yawMax);
+    // rpy[0] = (double)invNormalize(_userValue.lx, _rollMin, _rollMax);
+    // rpy[1] = (double)invNormalize(_userValue.ly, _pitchMin, _pitchMax);
+    // rpy[2] = init_yaw + (double)invNormalize(_userValue.rx, _yawMin, _yawMax);
 
     //p_des[0] = p_act[0] + (pFeet[0] + pFeet[3] + pFeet[6] + pFeet[9]) / 4.0;
     //p_des[1] = p_act[1] + (pFeet[1] + pFeet[4] + pFeet[7] + pFeet[10]) / 4.0;
 
-    balanceController.set_alpha_control(0.01);
+    balanceController.set_alpha_control(0.0001);
     balanceController.set_friction(0.4);
     balanceController.set_mass(_data->_quadruped->mass);
     balanceController.set_wrench_weights(COM_weights_stance, Base_weights_stance);
@@ -151,13 +180,20 @@ void FSMState_QPStand::run()
     double fOpt[12];
     balanceController.solveQP_nonThreaded(fOpt);
 
+    for (int leg = 0; leg < 2; leg++) {
+        fOptO[0] = fOpt[leg * 3];
+        fOptO[1] = fOpt[leg * 3 + 1];
+        fOptO[2] = fOpt[leg * 3 + 1];
+        fOptR = fOptO;
+        mOptO[0] = fOpt[6 + leg * 3];
+        mOptO[1] = fOpt[6 + leg * 3 + 1];
+        mOptO[2] = fOpt[6 + leg * 3 + 2];
+        mOptR = mOptO;
 
-    for (int leg = 0; leg < 4; leg++) {
-        footFeedForwardForces.col(leg) << fOpt[leg * 3], fOpt[leg * 3 + 1],
-        fOpt[leg * 3 + 2]; // force in world frame, need to convert to body frame
+        footFeedForwardForces.col(leg) << fOptR[0], fOptR[1], fOptR[2], mOptR[0], mOptR[1], mOptR[2]; // force in world frame, need to convert to body frame
         
         _data->_legController->commands[leg].feedforwardForce = footFeedForwardForces.col(leg);
-	    _data->_legController->commands[leg].kdJoint.diagonal() << 1, 1 ,1;
+	    // _data->_legController->commands[leg].kdJoint.diagonal() << 1, 1 ,1;
     }
 
     _data->_legController->updateCommand(_data->_lowCmd);
