@@ -38,9 +38,9 @@ double_t v_act[3];
 double_t O_err[3];
 double_t omegab_des[3];
 double_t omegab_act[3];
-double_t lbA[20];
-double_t ubA[20];
-double_t C_times_f[20];
+double_t lbA[22];
+double_t ubA[22];
+double_t C_times_f[24];
 double_t b_control[6];
 double_t b_control_Opt[6];
 double_t active;
@@ -49,8 +49,8 @@ double_t pfeet_act[12];
 };
 
 static const int NUM_VARIABLES_QP = 12;
-static const int NUM_CONSTRAINTS_QP = 20;
-static const int NUM_CONTACT_POINTS = 4;
+static const int NUM_CONSTRAINTS_QP = 22;
+static const int NUM_CONTACT_POINTS = 2;
 static const int NUM_VARIABLES_PER_FOOT = 3;
 static const int NUM_CONSTRAINTS_PER_FOOT = 5;
 
@@ -110,10 +110,9 @@ class BalanceController {
   // Uitility 
   void get_b_matrix(double* b);
 
-  Eigen::MatrixXd Ig;
-
  private:
   // lcm::LCM* lcm;
+//   ros::NodeHandle n;
   //ros::Publisher qp_pub = n.advertise<laikago_msgs::qp_controller_data_t>("/laikago_gazebo/qp_controller_data_t/", 1);
   QP_Controller_data_t qp_controller_data, qp_controller_data_publish;
   //sim_command_t command;
@@ -182,6 +181,7 @@ class BalanceController {
   /* Model and World parameters and force limits */
   double mass;
   double inertia;
+  Eigen::MatrixXd Ig;
 
   double mu_friction;
   Eigen::VectorXd gravity;

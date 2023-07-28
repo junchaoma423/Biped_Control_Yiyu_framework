@@ -25,18 +25,9 @@ class ContactEstimator : public GenericEstimator {
    * estimated contact state
    */
   virtual void run() {
-    // this->_stateEstimatorData.result->contactEstimate =
-    //     *this->_stateEstimatorData.contactPhase;
-
-    for(int i = 0; i < 4; i++){
-      if(this->_stateEstimatorData.lowState->FootForce[i] > 25){
-        this->_stateEstimatorData.result->contactEstimate(i) = 0.5;
-      }
-
-      else{
-        this->_stateEstimatorData.result->contactEstimate(i) = 0;
-      }
-    }
+    this->_stateEstimatorData.result->contactEstimate =
+        *this->_stateEstimatorData.contactPhase;
+        //std::cout << "get contacts" << std::endl;
   }
 
   /*!

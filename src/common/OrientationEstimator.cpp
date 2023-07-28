@@ -5,9 +5,10 @@
  * rpy, acceleration (world, body) from vector nav IMU
  */
 void VectorNavOrientationEstimator::run() {
-  //std::cout << "orientation" << std::endl;
+  std::cout << "Orientation Estimator Running" << std::endl;
   this->_stateEstimatorData.result->orientation[0] =
       this->_stateEstimatorData.lowState->imu.quaternion[0];
+  std::cout << "IMU quarternion data is " << this->_stateEstimatorData.lowState->imu.quaternion[0] << std::endl;
   this->_stateEstimatorData.result->orientation[1] =
       this->_stateEstimatorData.lowState->imu.quaternion[1];
   this->_stateEstimatorData.result->orientation[2] =

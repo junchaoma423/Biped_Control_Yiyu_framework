@@ -13,13 +13,9 @@ enum class UserCommand{
     // EXIT,
     NONE,
     START,      // walking
-    L2_A,       // fixedStand
     L2_B,       // passive
-    L2_X,       // QPStand
-    L2_Y,       // threefoot
-    L1_X,       // climb
-    L1_A,      
-    L1_Y        
+    L2_X,       // QP stand
+    L2_A,       // MPC stand  
 };
 
 enum class FSMMode{
@@ -29,14 +25,10 @@ enum class FSMMode{
 
 enum class FSMStateName{
     // EXIT,
-    INVALID,
-    PASSIVE,
-    PDSTAND,
     QPSTAND,
-    WALKING,
-    THREEFOOT,
-    CLIMB,
-    SLAM,       // slam
+    MPCSTAND,
+    PASSIVE,
+    INVALID,
 };
 
 

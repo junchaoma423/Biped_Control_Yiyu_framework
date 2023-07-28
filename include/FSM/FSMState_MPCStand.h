@@ -1,27 +1,26 @@
-#ifndef QPSTAND_H
-#define QPSTAND_H
+#ifndef MPCStand_H
+#define MPCStand_H
 
 #include "FSMState.h"
-#include <fstream>
-// #include "../../ConvexMPC/ConvexMPCLocomotion.h""
 #include "../../BalanceController/BalanceController.hpp"
+#include "../../ConvexMPC/convexMPC_interface.h"
 
-class FSMState_QPStand: public FSMState
+class FSMState_MPCStand: public FSMState
 {
     public:
-        FSMState_QPStand(ControlFSMData *data);
-        ~FSMState_QPStand(){}
+        FSMState_MPCStand(ControlFSMData *data);
+        ~FSMState_MPCStand(){}
         void enter();
         void run();
         void exit();
         FSMStateName checkTransition();
 
     private:
-        bool runMPC = false;
-
-        // QP Data
-        double init_yaw;
+        Vec3<double> v_command;
         double kpCOM[3], kdCOM[3], kpBase[3], kdBase[3];
+        bool runQP = true;
+         // QP Data
+        double init_yaw;
         Mat62<double> footFeedForwardForces = Mat62<double>::Zero();    // feedforward forces at the feet
         double minForce = 1;
         double maxForce = 150;
@@ -41,7 +40,6 @@ class FSMState_QPStand: public FSMState
         double omegaDes[3] = {0};
         double se_xfb[13] = {0};
         double b_control[6] = {0};
-
 };
 
 #endif

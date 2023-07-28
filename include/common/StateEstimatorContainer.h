@@ -32,7 +32,7 @@ struct CheaterState{
  */
 
 struct StateEstimate {
-    Vec4<double> contactEstimate;
+    Vec2<double> contactEstimate;
     Vec3<double> position;
     Vec3<double> vBody;
     Quat<double> orientation;
@@ -53,7 +53,7 @@ struct StateEstimatorData {
     StateEstimate* result;
     LowlevelState* lowState;
     LegControllerData* legControllerData;
-    Vec4<double>* contactPhase;
+    Vec2<double>* contactPhase;
 };
 
 /*!
@@ -84,7 +84,7 @@ class StateEstimatorContainer {
         _data.lowState = _lowState;
         _data.legControllerData = _legControllerData;
         _data.result = stateEstimate;
-        _phase = Vec4<double>::Zero();
+        _phase = Vec2<double>::Zero();
         _data.contactPhase = &_phase;
     }
     // deconstructor
@@ -95,6 +95,7 @@ class StateEstimatorContainer {
     }
     // run estimator
     void run(){
+        std::cout << "Running estimator container" << std::endl;
         for (auto estimator : _estimators){
             estimator->run();
         }
@@ -104,7 +105,7 @@ class StateEstimatorContainer {
     const StateEstimate&  getResult() {return *_data.result;}
 
     // set contact phase
-    void setContactPhase(Vec4<double>& phase) { *_data.contactPhase = phase; }
+    void setContactPhase(Vec2<double>& phase) { *_data.contactPhase = phase; }
 
     // add estimator of given type
     template <typename EstimatorToAdd>
@@ -143,7 +144,7 @@ class StateEstimatorContainer {
     }
   private:
     std::vector<GenericEstimator*> _estimators;
-    Vec4<double> _phase;
+    Vec2<double> _phase;
     StateEstimatorData _data;
 };
 

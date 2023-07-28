@@ -1,4 +1,5 @@
 #include "../../include/common/LegController.h"
+
 #include <iostream>
 
 // upper level of joint controller 
@@ -31,15 +32,22 @@ void LegControllerData::zero(){
 }
 
 void LegController::zeroCommand(){
-    for (int i = 0; i<4; i++){
+    for (int i = 0; i<2; i++){
         commands[i].zero();
     }
 }
 
-void LegController::updateData(const LowlevelState* state){
+void LegController::updateData(const LowlevelState* state, double* offset){
     int motor_sequence[10] = {1, 2, 9, 10, 11, 4, 5, 6, 7, 8};
     double gear_ratio = 1.5;
 
+    std::cout << "Raw data is " << std::endl;
+    for (int i = 0; i < 12; i++){
+        std::cout << state->motorState[i].q << "    ";
+    }
+    std::cout << "\n";
+
+    std::cout << "Checkpoint start updateData" << std::endl;
     // Joint sequence reassignment
     for (int leg = 0; leg < 2; leg++){
         for(int j = 0; j<5; j++){
@@ -49,13 +57,12 @@ void LegController::updateData(const LowlevelState* state){
         }
 
         if (leg == 1){
-            data[leg].qd(4) = -data[leg].qd(4);
-            data[leg].qd(5) = -data[leg].qd(5);
-            data[leg].qd(6) = -data[leg].qd(6);
+            data[leg].qd(0) = -data[leg].qd(0);
+            data[leg].qd(1) = -data[leg].qd(1);
+            data[leg].qd(2) = -data[leg].qd(2);
         }
     }
 
-    // Applying offsets
     for (int leg = 0; leg < 2; leg++){
         for(int i = 0; i < 5; i++){
             data[leg].q(i) = data[leg].q(i) + offset[i+leg*5];
@@ -67,6 +74,7 @@ void LegController::updateData(const LowlevelState* state){
         }
         data[leg].q(3) = -data[leg].q(3);
 
+
         // Implement Gear Ratio on Knee
         data[leg].q(3) = data[leg].q(3) / gear_ratio;
         data[leg].qd(3) = data[leg].qd(3) / gear_ratio;
@@ -74,22 +82,25 @@ void LegController::updateData(const LowlevelState* state){
 
         data[leg].q(4) = (data[leg].q(4)-data[leg].q(3));
 
+        std::cout << "leg "<< leg<< " angle data: " << std::endl;
+        for(int j = 0; j<5; j++){
+            std::cout << data[leg].q(j)*180/3.1415 << "    ";
+        }
+
 
         computeLegJacobianAndPosition(_quadruped, data[leg].q,&(data[leg].J), &(data[leg].J2) ,&(data[leg].p),leg);
 
          // v
         data[leg].v = data[leg].J2 * data[leg].qd;
     }
-    // std::cout << "jacobian " << data[0].J << std::endl;
-    //std::cout << "data updated" << std::endl;
 }
 
-void LegController::updateCommand(LowlevelCmd* cmd){
+void LegController::updateCommand(LowlevelCmd* cmd, double* offset, int motionTime){
     int motor_sequence[10] = {1, 2, 9, 10, 11, 4, 5, 6, 7, 8};
     double gear_ratio = 1.5;
 
     int zeroForceSwitch = 1;    // 0 = No input stance force
-    int zeroSwingForceSwitch = 1;   // 0 = No input swing
+    int zeroSwingForceSwitch = 0;   // 0 = No input swing
 
     for (int leg = 0; leg < 2; leg++){
         computeLegJacobianAndPosition(_quadruped, data[leg].q, &(data[leg].J), &(data[leg].J2), 
@@ -102,8 +113,15 @@ void LegController::updateCommand(LowlevelCmd* cmd){
         // forceFF
 
         Vec6<double> footForce = commands[leg].feedforwardForce;
+
+        std::cout << "foot force is " << commands[leg].feedforwardForce << std::endl;
         
         legTorque = (data[leg].J.transpose() * footForce)*zeroForceSwitch;
+
+        //   std::cout << "Leg torque "<<leg<<" is " << std::endl;
+        // for (int i = 0; i < 5; i++){
+        //     std::cout << legTorque(i) << "  ";
+        // }
         
         Vec3<double> footForce3 = commands[leg].kpCartesian * (commands[leg].pDes - data[leg].p);
         footForce3 += commands[leg].kdCartesian * (commands[leg].vDes - data[leg].v);
@@ -116,6 +134,8 @@ void LegController::updateCommand(LowlevelCmd* cmd){
         legTorque(2) += swingtau(2) * zeroSwingForceSwitch;
         legTorque(3) += swingtau(3) * zeroSwingForceSwitch;
 
+
+
         // for parallel control
         double toetau = commands[leg].kptoe * (-data[leg].q(3) - data[leg].q(2) - data[leg].q(4))
                 + commands[leg].kdtoe * (0 - data[leg].qd(4));
@@ -127,6 +147,7 @@ void LegController::updateCommand(LowlevelCmd* cmd){
         double hip1tau = kphip1*(0-data[leg].q(0)) + kdhip1*(0-data[leg].qd(0));
         legTorque(0) += hip1tau;
 
+
         commands[leg].tau = legTorque;
 
         //PD control
@@ -134,9 +155,9 @@ void LegController::updateCommand(LowlevelCmd* cmd){
         double percent;
 
         double duration = 4000;
-        percent = (double)motiontime/duration;
+        percent = (double)motionTime/duration;
 
-        if (motiontime > 4000){
+        if (motionTime > 4000){
             percent = 1.0;
         }
 
@@ -146,9 +167,24 @@ void LegController::updateCommand(LowlevelCmd* cmd){
         commands[leg].tau(3) = legTorque[3] * percent;
         commands[leg].tau(4) = legTorque[4] * percent;
 
+        std::cout << "Percent is " << percent << std::endl;
+
+        std::cout << "Leg torque "<<leg<<" is " << std::endl;
+        for (int i = 0; i < 5; i++){
+            std::cout << commands[leg].tau(i) << "  ";
+        }
+
+
         // Reassigning motor torque sequence (Only have torque control)
         commands[leg].tau(3) = -commands[leg].tau(3) / gear_ratio;
         commands[leg].tau(4) = -commands[leg].tau(4);
+
+        std::cout << "Leg torque command "<<leg<<" is " << std::endl;
+        for (int i = 0; i < 5; i++){
+            std::cout << commands[leg].tau(i) << "  ";
+        }
+        std::cout << "\n";
+
 
         if (leg == 1){
             commands[leg].tau(0) = -commands[leg].tau(0);
@@ -174,9 +210,10 @@ void LegController::updateCommand(LowlevelCmd* cmd){
             cmd->motorCmd[0].Kp = 0;
             cmd->motorCmd[3].Kp = 0;
 
-            commands[i].tau << 0, 0, 0; // zero torque command to prevent interference
+            // commands[i].tau << 0, 0, 0, 0, 0; // zero torque command to prevent interference
         }
 
+        std::cout << "This doesn't have output " << std::endl;
         // No Output (Comment out if running)
         for (int i = 0; i < 12; i++){
             cmd->motorCmd[i].tau = 0;
@@ -184,6 +221,10 @@ void LegController::updateCommand(LowlevelCmd* cmd){
             cmd->motorCmd[i].Kd = 0;
         }
 
+    }
+
+    for (int i = 0; i< 2; i++){
+        commands[i].tau << 0,0,0,0,0;
     }
     //std::cout << "cmd sent" << std::endl;
    

@@ -25,6 +25,7 @@ void balanceControl_solveQP_nonThreaded();
 void balanceControl_set_friction(double mu_in);
 void balanceControl_set_alpha_control(double alpha_control_in);
 void balanceControl_set_mass(double mass_in);
+void balanceControl_publish_data_lcm();
 double balanceControl_get_fOpt_matlab(int index);
 
 void bcPrint();

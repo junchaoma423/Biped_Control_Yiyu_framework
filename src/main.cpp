@@ -38,7 +38,7 @@ int main()
     
     double dt = 0.001;    
     int robot_id = 4; // AlienGo=1, A1=2, Biped=4
-    int cmd_panel_id = 1; // Wireless=1, keyboard=2
+    int cmd_panel_id = 2; // Wireless=1, keyboard=2
     
     IOInterface *ioInter;
     if(robot_id == 1){
@@ -55,6 +55,7 @@ int main()
     LegController* legController = new LegController(quad);
     LowlevelCmd* lowCmd = new LowlevelCmd();
     LowlevelState* lowState = new LowlevelState();
+
     StateEstimate stateEstimate;
     StateEstimatorContainer* stateEstimator = new StateEstimatorContainer(lowState,
                                                                           legController->data,
@@ -62,7 +63,8 @@ int main()
                                                                         
     stateEstimator->addEstimator<ContactEstimator>();
     stateEstimator->addEstimator<VectorNavOrientationEstimator>();
-    stateEstimator->addEstimator<TunedKFPositionVelocityEstimator>();
+    stateEstimator->addEstimator<LinearKFPositionVelocityEstimator>();   //We might not have this
+
 
     DesiredStateCommand* desiredStateCommand = new DesiredStateCommand(&stateEstimate, dt);
 
@@ -77,11 +79,12 @@ int main()
 
     FSM* _FSMController = new FSM(_controlData);
 
+
     LoopFunc loop_control("control_loop", dt, boost::bind(&FSM::run, _FSMController));
-    // LoopFunc loop_udpSend("udp_send",     dt, 3, boost::bind(&ControlFSMData::sendRecv, _controlData));
+    LoopFunc loop_udpSend("udp_send",     dt, 3, boost::bind(&ControlFSMData::sendRecv, _controlData));
 
 
-    // loop_udpSend.start();
+    loop_udpSend.start();
     loop_control.start();
 
 

@@ -9,6 +9,7 @@
 #define FOOTSWINGTRAJECTORY_H
 
 #include "cppTypes.h"
+#include <fstream>
 
 /*!
  * A foot swing trajectory for a single foot

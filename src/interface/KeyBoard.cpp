@@ -41,14 +41,14 @@ UserCommand KeyBoard::checkCmd(){
         return UserCommand::L2_X;
     case '4':
         return UserCommand::START;
-    case '5':
-        return UserCommand::L2_Y;
-    case '0':
-        return UserCommand::L1_X;
-    case '9':
-        return UserCommand::L1_A;
-    case '8':
-        return UserCommand::L1_Y;
+    // case '5':
+    //     return UserCommand::L2_Y;
+    // case '0':
+    //     return UserCommand::L1_X;
+    // case '9':
+    //     return UserCommand::L1_A;
+    // case '8':
+    //     return UserCommand::L1_Y;
     case ' ':
         userValue.setZero();
         return UserCommand::NONE;

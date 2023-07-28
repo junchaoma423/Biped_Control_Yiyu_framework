@@ -68,8 +68,8 @@
         void stand();
         void zeroCommand();
         void edampCommand(double gain);
-        void updateData(const LowlevelState* state);
-        void updateCommand(LowlevelCmd* cmd);
+        void updateData(const LowlevelState* state, double* offset);
+        void updateCommand(LowlevelCmd* cmd, double* offset, int motionTime);
         void setEnabled(bool enabled) {_legsEnabled = enabled;};    // Don't know what does this do
 
 
