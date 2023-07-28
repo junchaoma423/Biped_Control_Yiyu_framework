@@ -42,11 +42,11 @@ R_ext/Print.h
 
 ../third_party/JCQP/amd/include/osqp_configure.h
 
-/home/junchao/biped_control/third_party/JCQP/CholeskyDenseSolver.cpp
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/CholeskyDenseSolver.cpp
 CholeskyDenseSolver.h
-/home/junchao/biped_control/third_party/JCQP/CholeskyDenseSolver.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/CholeskyDenseSolver.h
 Timer.h
-/home/junchao/biped_control/third_party/JCQP/Timer.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/Timer.h
 cassert
 -
 iostream
@@ -54,53 +54,53 @@ iostream
 immintrin.h
 -
 
-/home/junchao/biped_control/third_party/JCQP/CholeskyDenseSolver.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/CholeskyDenseSolver.h
 types.h
-/home/junchao/biped_control/third_party/JCQP/types.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/types.h
 
-/home/junchao/biped_control/third_party/JCQP/CholeskySparseSolver.cpp
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/CholeskySparseSolver.cpp
 CholeskySparseSolver.h
-/home/junchao/biped_control/third_party/JCQP/CholeskySparseSolver.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/CholeskySparseSolver.h
 SparseMatrixMath.h
-/home/junchao/biped_control/third_party/JCQP/SparseMatrixMath.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/SparseMatrixMath.h
 Timer.h
-/home/junchao/biped_control/third_party/JCQP/Timer.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/Timer.h
 amd.h
-/home/junchao/biped_control/third_party/JCQP/amd.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd.h
 iostream
 -
 immintrin.h
 -
 
-/home/junchao/biped_control/third_party/JCQP/CholeskySparseSolver.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/CholeskySparseSolver.h
 types.h
-/home/junchao/biped_control/third_party/JCQP/types.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/types.h
 SparseMatrixMath.h
-/home/junchao/biped_control/third_party/JCQP/SparseMatrixMath.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/SparseMatrixMath.h
 
-/home/junchao/biped_control/third_party/JCQP/ProblemGenerator.cpp
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/ProblemGenerator.cpp
 ProblemGenerator.h
-/home/junchao/biped_control/third_party/JCQP/ProblemGenerator.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/ProblemGenerator.h
 eigenvalues.h
-/home/junchao/biped_control/third_party/JCQP/eigenvalues.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/eigenvalues.h
 iostream
 -
 
-/home/junchao/biped_control/third_party/JCQP/ProblemGenerator.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/ProblemGenerator.h
 QpProblem.h
-/home/junchao/biped_control/third_party/JCQP/QpProblem.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/QpProblem.h
 
-/home/junchao/biped_control/third_party/JCQP/QpProblem.cpp
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/QpProblem.cpp
 iostream
 -
 QpProblem.h
-/home/junchao/biped_control/third_party/JCQP/QpProblem.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/QpProblem.h
 Timer.h
-/home/junchao/biped_control/third_party/JCQP/Timer.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/Timer.h
 vector
 -
 
-/home/junchao/biped_control/third_party/JCQP/QpProblem.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/QpProblem.h
 vector
 -
 eigen3/Eigen/SparseCholesky
@@ -108,21 +108,21 @@ eigen3/Eigen/SparseCholesky
 eigen3/Eigen/Sparse
 -
 types.h
-/home/junchao/biped_control/third_party/JCQP/types.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/types.h
 CholeskyDenseSolver.h
-/home/junchao/biped_control/third_party/JCQP/CholeskyDenseSolver.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/CholeskyDenseSolver.h
 CholeskySparseSolver.h
-/home/junchao/biped_control/third_party/JCQP/CholeskySparseSolver.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/CholeskySparseSolver.h
 
-/home/junchao/biped_control/third_party/JCQP/SparseMatrixMath.cpp
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/SparseMatrixMath.cpp
 SparseMatrixMath.h
-/home/junchao/biped_control/third_party/JCQP/SparseMatrixMath.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/SparseMatrixMath.h
 
-/home/junchao/biped_control/third_party/JCQP/SparseMatrixMath.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/SparseMatrixMath.h
 types.h
-/home/junchao/biped_control/third_party/JCQP/types.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/types.h
 
-/home/junchao/biped_control/third_party/JCQP/Timer.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/Timer.h
 time.h
 -
 stdint.h
@@ -130,17 +130,17 @@ stdint.h
 assert.h
 -
 
-/home/junchao/biped_control/third_party/JCQP/eigenvalues.cpp
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/eigenvalues.cpp
 eigenvalues.h
-/home/junchao/biped_control/third_party/JCQP/eigenvalues.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/eigenvalues.h
 eigen3/Eigen/Eigenvalues
 -
 
-/home/junchao/biped_control/third_party/JCQP/eigenvalues.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/eigenvalues.h
 types.h
-/home/junchao/biped_control/third_party/JCQP/types.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/types.h
 
-/home/junchao/biped_control/third_party/JCQP/types.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/types.h
 stdint.h
 -
 eigen3/Eigen/Dense

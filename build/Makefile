@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/junchao/biped_control
+CMAKE_SOURCE_DIR = /home/junchao/Biped_Control_Yiyu_framework
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/junchao/biped_control/build
+CMAKE_BINARY_DIR = /home/junchao/Biped_Control_Yiyu_framework/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,9 +126,9 @@ install/local/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/junchao/biped_control/build/CMakeFiles /home/junchao/biped_control/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles /home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/junchao/biped_control/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -262,86 +262,32 @@ BalanceController/BalanceControllerWrapper.cpp.s:
 	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/BalanceController/BalanceControllerWrapper.cpp.s
 .PHONY : BalanceController/BalanceControllerWrapper.cpp.s
 
-ConvexMPC/Gait.o: ConvexMPC/Gait.cpp.o
+ConvexMPC/ConvexMPCLocomotion.o: ConvexMPC/ConvexMPCLocomotion.cpp.o
 
-.PHONY : ConvexMPC/Gait.o
-
-# target to build an object file
-ConvexMPC/Gait.cpp.o:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/Gait.cpp.o
-.PHONY : ConvexMPC/Gait.cpp.o
-
-ConvexMPC/Gait.i: ConvexMPC/Gait.cpp.i
-
-.PHONY : ConvexMPC/Gait.i
-
-# target to preprocess a source file
-ConvexMPC/Gait.cpp.i:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/Gait.cpp.i
-.PHONY : ConvexMPC/Gait.cpp.i
-
-ConvexMPC/Gait.s: ConvexMPC/Gait.cpp.s
-
-.PHONY : ConvexMPC/Gait.s
-
-# target to generate assembly for a file
-ConvexMPC/Gait.cpp.s:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/Gait.cpp.s
-.PHONY : ConvexMPC/Gait.cpp.s
-
-ConvexMPC/MPCLocoMotion.o: ConvexMPC/MPCLocoMotion.cpp.o
-
-.PHONY : ConvexMPC/MPCLocoMotion.o
+.PHONY : ConvexMPC/ConvexMPCLocomotion.o
 
 # target to build an object file
-ConvexMPC/MPCLocoMotion.cpp.o:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/MPCLocoMotion.cpp.o
-.PHONY : ConvexMPC/MPCLocoMotion.cpp.o
+ConvexMPC/ConvexMPCLocomotion.cpp.o:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/ConvexMPCLocomotion.cpp.o
+.PHONY : ConvexMPC/ConvexMPCLocomotion.cpp.o
 
-ConvexMPC/MPCLocoMotion.i: ConvexMPC/MPCLocoMotion.cpp.i
+ConvexMPC/ConvexMPCLocomotion.i: ConvexMPC/ConvexMPCLocomotion.cpp.i
 
-.PHONY : ConvexMPC/MPCLocoMotion.i
-
-# target to preprocess a source file
-ConvexMPC/MPCLocoMotion.cpp.i:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/MPCLocoMotion.cpp.i
-.PHONY : ConvexMPC/MPCLocoMotion.cpp.i
-
-ConvexMPC/MPCLocoMotion.s: ConvexMPC/MPCLocoMotion.cpp.s
-
-.PHONY : ConvexMPC/MPCLocoMotion.s
-
-# target to generate assembly for a file
-ConvexMPC/MPCLocoMotion.cpp.s:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/MPCLocoMotion.cpp.s
-.PHONY : ConvexMPC/MPCLocoMotion.cpp.s
-
-ConvexMPC/NominalMPC.o: ConvexMPC/NominalMPC.cpp.o
-
-.PHONY : ConvexMPC/NominalMPC.o
-
-# target to build an object file
-ConvexMPC/NominalMPC.cpp.o:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/NominalMPC.cpp.o
-.PHONY : ConvexMPC/NominalMPC.cpp.o
-
-ConvexMPC/NominalMPC.i: ConvexMPC/NominalMPC.cpp.i
-
-.PHONY : ConvexMPC/NominalMPC.i
+.PHONY : ConvexMPC/ConvexMPCLocomotion.i
 
 # target to preprocess a source file
-ConvexMPC/NominalMPC.cpp.i:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/NominalMPC.cpp.i
-.PHONY : ConvexMPC/NominalMPC.cpp.i
+ConvexMPC/ConvexMPCLocomotion.cpp.i:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/ConvexMPCLocomotion.cpp.i
+.PHONY : ConvexMPC/ConvexMPCLocomotion.cpp.i
 
-ConvexMPC/NominalMPC.s: ConvexMPC/NominalMPC.cpp.s
+ConvexMPC/ConvexMPCLocomotion.s: ConvexMPC/ConvexMPCLocomotion.cpp.s
 
-.PHONY : ConvexMPC/NominalMPC.s
+.PHONY : ConvexMPC/ConvexMPCLocomotion.s
 
 # target to generate assembly for a file
-ConvexMPC/NominalMPC.cpp.s:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/NominalMPC.cpp.s
-.PHONY : ConvexMPC/NominalMPC.cpp.s
+ConvexMPC/ConvexMPCLocomotion.cpp.s:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/ConvexMPCLocomotion.cpp.s
+.PHONY : ConvexMPC/ConvexMPCLocomotion.cpp.s
 
 ConvexMPC/RobotState.o: ConvexMPC/RobotState.cpp.o
 
@@ -396,33 +342,6 @@ ConvexMPC/SolverMPC.s: ConvexMPC/SolverMPC.cpp.s
 ConvexMPC/SolverMPC.cpp.s:
 	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/SolverMPC.cpp.s
 .PHONY : ConvexMPC/SolverMPC.cpp.s
-
-ConvexMPC/StairMPC.o: ConvexMPC/StairMPC.cpp.o
-
-.PHONY : ConvexMPC/StairMPC.o
-
-# target to build an object file
-ConvexMPC/StairMPC.cpp.o:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/StairMPC.cpp.o
-.PHONY : ConvexMPC/StairMPC.cpp.o
-
-ConvexMPC/StairMPC.i: ConvexMPC/StairMPC.cpp.i
-
-.PHONY : ConvexMPC/StairMPC.i
-
-# target to preprocess a source file
-ConvexMPC/StairMPC.cpp.i:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/StairMPC.cpp.i
-.PHONY : ConvexMPC/StairMPC.cpp.i
-
-ConvexMPC/StairMPC.s: ConvexMPC/StairMPC.cpp.s
-
-.PHONY : ConvexMPC/StairMPC.s
-
-# target to generate assembly for a file
-ConvexMPC/StairMPC.cpp.s:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/ConvexMPC/StairMPC.cpp.s
-.PHONY : ConvexMPC/StairMPC.cpp.s
 
 ConvexMPC/convexMPC_interface.o: ConvexMPC/convexMPC_interface.cpp.o
 
@@ -505,59 +424,32 @@ src/FSM/FSMState.cpp.s:
 	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState.cpp.s
 .PHONY : src/FSM/FSMState.cpp.s
 
-src/FSM/FSMState_Climb.o: src/FSM/FSMState_Climb.cpp.o
+src/FSM/FSMState_MPCStand.o: src/FSM/FSMState_MPCStand.cpp.o
 
-.PHONY : src/FSM/FSMState_Climb.o
-
-# target to build an object file
-src/FSM/FSMState_Climb.cpp.o:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_Climb.cpp.o
-.PHONY : src/FSM/FSMState_Climb.cpp.o
-
-src/FSM/FSMState_Climb.i: src/FSM/FSMState_Climb.cpp.i
-
-.PHONY : src/FSM/FSMState_Climb.i
-
-# target to preprocess a source file
-src/FSM/FSMState_Climb.cpp.i:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_Climb.cpp.i
-.PHONY : src/FSM/FSMState_Climb.cpp.i
-
-src/FSM/FSMState_Climb.s: src/FSM/FSMState_Climb.cpp.s
-
-.PHONY : src/FSM/FSMState_Climb.s
-
-# target to generate assembly for a file
-src/FSM/FSMState_Climb.cpp.s:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_Climb.cpp.s
-.PHONY : src/FSM/FSMState_Climb.cpp.s
-
-src/FSM/FSMState_PDStand.o: src/FSM/FSMState_PDStand.cpp.o
-
-.PHONY : src/FSM/FSMState_PDStand.o
+.PHONY : src/FSM/FSMState_MPCStand.o
 
 # target to build an object file
-src/FSM/FSMState_PDStand.cpp.o:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_PDStand.cpp.o
-.PHONY : src/FSM/FSMState_PDStand.cpp.o
+src/FSM/FSMState_MPCStand.cpp.o:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_MPCStand.cpp.o
+.PHONY : src/FSM/FSMState_MPCStand.cpp.o
 
-src/FSM/FSMState_PDStand.i: src/FSM/FSMState_PDStand.cpp.i
+src/FSM/FSMState_MPCStand.i: src/FSM/FSMState_MPCStand.cpp.i
 
-.PHONY : src/FSM/FSMState_PDStand.i
+.PHONY : src/FSM/FSMState_MPCStand.i
 
 # target to preprocess a source file
-src/FSM/FSMState_PDStand.cpp.i:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_PDStand.cpp.i
-.PHONY : src/FSM/FSMState_PDStand.cpp.i
+src/FSM/FSMState_MPCStand.cpp.i:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_MPCStand.cpp.i
+.PHONY : src/FSM/FSMState_MPCStand.cpp.i
 
-src/FSM/FSMState_PDStand.s: src/FSM/FSMState_PDStand.cpp.s
+src/FSM/FSMState_MPCStand.s: src/FSM/FSMState_MPCStand.cpp.s
 
-.PHONY : src/FSM/FSMState_PDStand.s
+.PHONY : src/FSM/FSMState_MPCStand.s
 
 # target to generate assembly for a file
-src/FSM/FSMState_PDStand.cpp.s:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_PDStand.cpp.s
-.PHONY : src/FSM/FSMState_PDStand.cpp.s
+src/FSM/FSMState_MPCStand.cpp.s:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_MPCStand.cpp.s
+.PHONY : src/FSM/FSMState_MPCStand.cpp.s
 
 src/FSM/FSMState_Passive.o: src/FSM/FSMState_Passive.cpp.o
 
@@ -612,60 +504,6 @@ src/FSM/FSMState_QPStand.s: src/FSM/FSMState_QPStand.cpp.s
 src/FSM/FSMState_QPStand.cpp.s:
 	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_QPStand.cpp.s
 .PHONY : src/FSM/FSMState_QPStand.cpp.s
-
-src/FSM/FSMState_ThreeFoot.o: src/FSM/FSMState_ThreeFoot.cpp.o
-
-.PHONY : src/FSM/FSMState_ThreeFoot.o
-
-# target to build an object file
-src/FSM/FSMState_ThreeFoot.cpp.o:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_ThreeFoot.cpp.o
-.PHONY : src/FSM/FSMState_ThreeFoot.cpp.o
-
-src/FSM/FSMState_ThreeFoot.i: src/FSM/FSMState_ThreeFoot.cpp.i
-
-.PHONY : src/FSM/FSMState_ThreeFoot.i
-
-# target to preprocess a source file
-src/FSM/FSMState_ThreeFoot.cpp.i:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_ThreeFoot.cpp.i
-.PHONY : src/FSM/FSMState_ThreeFoot.cpp.i
-
-src/FSM/FSMState_ThreeFoot.s: src/FSM/FSMState_ThreeFoot.cpp.s
-
-.PHONY : src/FSM/FSMState_ThreeFoot.s
-
-# target to generate assembly for a file
-src/FSM/FSMState_ThreeFoot.cpp.s:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_ThreeFoot.cpp.s
-.PHONY : src/FSM/FSMState_ThreeFoot.cpp.s
-
-src/FSM/FSMState_Walking.o: src/FSM/FSMState_Walking.cpp.o
-
-.PHONY : src/FSM/FSMState_Walking.o
-
-# target to build an object file
-src/FSM/FSMState_Walking.cpp.o:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_Walking.cpp.o
-.PHONY : src/FSM/FSMState_Walking.cpp.o
-
-src/FSM/FSMState_Walking.i: src/FSM/FSMState_Walking.cpp.i
-
-.PHONY : src/FSM/FSMState_Walking.i
-
-# target to preprocess a source file
-src/FSM/FSMState_Walking.cpp.i:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_Walking.cpp.i
-.PHONY : src/FSM/FSMState_Walking.cpp.i
-
-src/FSM/FSMState_Walking.s: src/FSM/FSMState_Walking.cpp.s
-
-.PHONY : src/FSM/FSMState_Walking.s
-
-# target to generate assembly for a file
-src/FSM/FSMState_Walking.cpp.s:
-	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/FSM/FSMState_Walking.cpp.s
-.PHONY : src/FSM/FSMState_Walking.cpp.s
 
 src/common/DesiredCommand.o: src/common/DesiredCommand.cpp.o
 
@@ -775,6 +613,33 @@ src/common/OrientationEstimator.cpp.s:
 	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/common/OrientationEstimator.cpp.s
 .PHONY : src/common/OrientationEstimator.cpp.s
 
+src/common/PoseData.o: src/common/PoseData.cpp.o
+
+.PHONY : src/common/PoseData.o
+
+# target to build an object file
+src/common/PoseData.cpp.o:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/common/PoseData.cpp.o
+.PHONY : src/common/PoseData.cpp.o
+
+src/common/PoseData.i: src/common/PoseData.cpp.i
+
+.PHONY : src/common/PoseData.i
+
+# target to preprocess a source file
+src/common/PoseData.cpp.i:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/common/PoseData.cpp.i
+.PHONY : src/common/PoseData.cpp.i
+
+src/common/PoseData.s: src/common/PoseData.cpp.s
+
+.PHONY : src/common/PoseData.s
+
+# target to generate assembly for a file
+src/common/PoseData.cpp.s:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/common/PoseData.cpp.s
+.PHONY : src/common/PoseData.cpp.s
+
 src/common/PositionVelocityEstimator.o: src/common/PositionVelocityEstimator.cpp.o
 
 .PHONY : src/common/PositionVelocityEstimator.o
@@ -828,6 +693,33 @@ src/interface/IOSDK.s: src/interface/IOSDK.cpp.s
 src/interface/IOSDK.cpp.s:
 	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/interface/IOSDK.cpp.s
 .PHONY : src/interface/IOSDK.cpp.s
+
+src/interface/Joystick.o: src/interface/Joystick.cpp.o
+
+.PHONY : src/interface/Joystick.o
+
+# target to build an object file
+src/interface/Joystick.cpp.o:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/interface/Joystick.cpp.o
+.PHONY : src/interface/Joystick.cpp.o
+
+src/interface/Joystick.i: src/interface/Joystick.cpp.i
+
+.PHONY : src/interface/Joystick.i
+
+# target to preprocess a source file
+src/interface/Joystick.cpp.i:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/interface/Joystick.cpp.i
+.PHONY : src/interface/Joystick.cpp.i
+
+src/interface/Joystick.s: src/interface/Joystick.cpp.s
+
+.PHONY : src/interface/Joystick.s
+
+# target to generate assembly for a file
+src/interface/Joystick.cpp.s:
+	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/src/interface/Joystick.cpp.s
+.PHONY : src/interface/Joystick.cpp.s
 
 src/interface/KeyBoard.o: src/interface/KeyBoard.cpp.o
 
@@ -932,24 +824,15 @@ help:
 	@echo "... BalanceController/BalanceControllerWrapper.o"
 	@echo "... BalanceController/BalanceControllerWrapper.i"
 	@echo "... BalanceController/BalanceControllerWrapper.s"
-	@echo "... ConvexMPC/Gait.o"
-	@echo "... ConvexMPC/Gait.i"
-	@echo "... ConvexMPC/Gait.s"
-	@echo "... ConvexMPC/MPCLocoMotion.o"
-	@echo "... ConvexMPC/MPCLocoMotion.i"
-	@echo "... ConvexMPC/MPCLocoMotion.s"
-	@echo "... ConvexMPC/NominalMPC.o"
-	@echo "... ConvexMPC/NominalMPC.i"
-	@echo "... ConvexMPC/NominalMPC.s"
+	@echo "... ConvexMPC/ConvexMPCLocomotion.o"
+	@echo "... ConvexMPC/ConvexMPCLocomotion.i"
+	@echo "... ConvexMPC/ConvexMPCLocomotion.s"
 	@echo "... ConvexMPC/RobotState.o"
 	@echo "... ConvexMPC/RobotState.i"
 	@echo "... ConvexMPC/RobotState.s"
 	@echo "... ConvexMPC/SolverMPC.o"
 	@echo "... ConvexMPC/SolverMPC.i"
 	@echo "... ConvexMPC/SolverMPC.s"
-	@echo "... ConvexMPC/StairMPC.o"
-	@echo "... ConvexMPC/StairMPC.i"
-	@echo "... ConvexMPC/StairMPC.s"
 	@echo "... ConvexMPC/convexMPC_interface.o"
 	@echo "... ConvexMPC/convexMPC_interface.i"
 	@echo "... ConvexMPC/convexMPC_interface.s"
@@ -959,24 +842,15 @@ help:
 	@echo "... src/FSM/FSMState.o"
 	@echo "... src/FSM/FSMState.i"
 	@echo "... src/FSM/FSMState.s"
-	@echo "... src/FSM/FSMState_Climb.o"
-	@echo "... src/FSM/FSMState_Climb.i"
-	@echo "... src/FSM/FSMState_Climb.s"
-	@echo "... src/FSM/FSMState_PDStand.o"
-	@echo "... src/FSM/FSMState_PDStand.i"
-	@echo "... src/FSM/FSMState_PDStand.s"
+	@echo "... src/FSM/FSMState_MPCStand.o"
+	@echo "... src/FSM/FSMState_MPCStand.i"
+	@echo "... src/FSM/FSMState_MPCStand.s"
 	@echo "... src/FSM/FSMState_Passive.o"
 	@echo "... src/FSM/FSMState_Passive.i"
 	@echo "... src/FSM/FSMState_Passive.s"
 	@echo "... src/FSM/FSMState_QPStand.o"
 	@echo "... src/FSM/FSMState_QPStand.i"
 	@echo "... src/FSM/FSMState_QPStand.s"
-	@echo "... src/FSM/FSMState_ThreeFoot.o"
-	@echo "... src/FSM/FSMState_ThreeFoot.i"
-	@echo "... src/FSM/FSMState_ThreeFoot.s"
-	@echo "... src/FSM/FSMState_Walking.o"
-	@echo "... src/FSM/FSMState_Walking.i"
-	@echo "... src/FSM/FSMState_Walking.s"
 	@echo "... src/common/DesiredCommand.o"
 	@echo "... src/common/DesiredCommand.i"
 	@echo "... src/common/DesiredCommand.s"
@@ -989,12 +863,18 @@ help:
 	@echo "... src/common/OrientationEstimator.o"
 	@echo "... src/common/OrientationEstimator.i"
 	@echo "... src/common/OrientationEstimator.s"
+	@echo "... src/common/PoseData.o"
+	@echo "... src/common/PoseData.i"
+	@echo "... src/common/PoseData.s"
 	@echo "... src/common/PositionVelocityEstimator.o"
 	@echo "... src/common/PositionVelocityEstimator.i"
 	@echo "... src/common/PositionVelocityEstimator.s"
 	@echo "... src/interface/IOSDK.o"
 	@echo "... src/interface/IOSDK.i"
 	@echo "... src/interface/IOSDK.s"
+	@echo "... src/interface/Joystick.o"
+	@echo "... src/interface/Joystick.i"
+	@echo "... src/interface/Joystick.s"
 	@echo "... src/interface/KeyBoard.o"
 	@echo "... src/interface/KeyBoard.i"
 	@echo "... src/interface/KeyBoard.s"

@@ -1,4 +1,4 @@
-# Install script for directory: /home/junchao/biped_control
+# Install script for directory: /home/junchao/Biped_Control_Yiyu_framework
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/junchao/biped_control/build/third_party/qpOASES/cmake_install.cmake")
-  include("/home/junchao/biped_control/build/third_party/JCQP/cmake_install.cmake")
+  include("/home/junchao/Biped_Control_Yiyu_framework/build/third_party/qpOASES/cmake_install.cmake")
+  include("/home/junchao/Biped_Control_Yiyu_framework/build/third_party/JCQP/cmake_install.cmake")
 
 endif()
 
@@ -52,5 +52,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/junchao/biped_control/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/junchao/Biped_Control_Yiyu_framework/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

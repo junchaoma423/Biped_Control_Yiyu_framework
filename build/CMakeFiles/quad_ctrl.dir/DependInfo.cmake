@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/junchao/biped_control/src/main.cpp" "/home/junchao/biped_control/build/CMakeFiles/quad_ctrl.dir/src/main.cpp.o"
+  "/home/junchao/Biped_Control_Yiyu_framework/src/main.cpp" "/home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles/quad_ctrl.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -14,13 +14,14 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include"
   "/usr/local/include/eigen3"
   "../include/sdk/include"
+  "/usr/include/SDL2"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/junchao/biped_control/build/CMakeFiles/src.dir/DependInfo.cmake"
-  "/home/junchao/biped_control/build/third_party/qpOASES/CMakeFiles/qpOASES.dir/DependInfo.cmake"
-  "/home/junchao/biped_control/build/third_party/JCQP/CMakeFiles/JCQP.dir/DependInfo.cmake"
+  "/home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles/src.dir/DependInfo.cmake"
+  "/home/junchao/Biped_Control_Yiyu_framework/build/third_party/qpOASES/CMakeFiles/qpOASES.dir/DependInfo.cmake"
+  "/home/junchao/Biped_Control_Yiyu_framework/build/third_party/JCQP/CMakeFiles/JCQP.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

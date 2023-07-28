@@ -1,4 +1,4 @@
-# Install script for directory: /home/junchao/biped_control/third_party/JCQP
+# Install script for directory: /home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

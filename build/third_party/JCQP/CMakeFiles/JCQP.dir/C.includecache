@@ -62,9 +62,9 @@ R_ext/Print.h
 
 ../third_party/JCQP/amd/include/osqp_configure.h
 
-/home/junchao/biped_control/third_party/JCQP/amd/src/SuiteSparse_config.c
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/SuiteSparse_config.c
 glob_opts.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/glob_opts.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/glob_opts.h
 math.h
 -
 stdlib.h
@@ -72,55 +72,55 @@ stdlib.h
 stdio.h
 -
 mex.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/mex.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/mex.h
 matrix.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/matrix.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/matrix.h
 SuiteSparse_config.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/SuiteSparse_config.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/SuiteSparse_config.h
 time.h
 -
 
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_1.c
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_1.c
 amd_internal.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_internal.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_internal.h
 
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_2.c
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_2.c
 amd_internal.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_internal.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_internal.h
 
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_aat.c
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_aat.c
 amd_internal.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_internal.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_internal.h
 
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_control.c
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_control.c
 amd_internal.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_internal.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_internal.h
 
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_defaults.c
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_defaults.c
 amd_internal.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_internal.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_internal.h
 
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_info.c
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_info.c
 amd_internal.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_internal.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_internal.h
 
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_order.c
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_order.c
 amd_internal.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_internal.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_internal.h
 
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_post_tree.c
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_post_tree.c
 amd_internal.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_internal.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_internal.h
 
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_postorder.c
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_postorder.c
 amd_internal.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_internal.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_internal.h
 
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_preprocess.c
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_preprocess.c
 amd_internal.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_internal.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_internal.h
 
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_valid.c
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_valid.c
 amd_internal.h
-/home/junchao/biped_control/third_party/JCQP/amd/src/amd_internal.h
+/home/junchao/Biped_Control_Yiyu_framework/third_party/JCQP/amd/src/amd_internal.h
 

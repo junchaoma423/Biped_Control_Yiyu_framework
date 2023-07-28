@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -no-pie -ggdb -w -D__NO_COPYRIGHT__ -Wno-error -Wall -pedantic -
 
 CXX_DEFINES = -DqpOASES_EXPORTS
 
-CXX_INCLUDES = -I/home/junchao/biped_control/build -I/home/junchao/biped_control/third_party/qpOASES/include 
+CXX_INCLUDES = -I/home/junchao/Biped_Control_Yiyu_framework/build -I/home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include 
 

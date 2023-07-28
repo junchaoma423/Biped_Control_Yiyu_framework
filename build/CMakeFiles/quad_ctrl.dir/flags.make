@@ -6,5 +6,5 @@ CXX_FLAGS = -O3   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/junchao/biped_control/build -I/home/junchao/biped_control/include -I/usr/local/include/eigen3 -I/home/junchao/biped_control/include/sdk/include 
+CXX_INCLUDES = -I/home/junchao/Biped_Control_Yiyu_framework/build -I/home/junchao/Biped_Control_Yiyu_framework/include -I/usr/local/include/eigen3 -I/home/junchao/Biped_Control_Yiyu_framework/include/sdk/include -I/usr/include/SDL2 
 
