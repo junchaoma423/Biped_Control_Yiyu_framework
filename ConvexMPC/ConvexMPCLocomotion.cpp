@@ -4,6 +4,7 @@
 #include "ConvexMPCLocomotion.h"
 #include "convexMPC_interface.h"
 
+using namespace ori;
 
 /* ========================= GAIT ========================= */
 Gait::Gait(int nMPC_segments, Vec2<int> offsets, Vec2<int> durations, const std::string &name) : _offsets(offsets.array()), // 0 5
@@ -133,7 +134,7 @@ ConvexMPCLocomotion::ConvexMPCLocomotion(double _dt, int _iterations_between_mpc
                                                                                     galloping(horizonLength, Vec2<int>(0, 2), Vec2<int>(5, 5), "Galloping"),
                                                                                     pronking(horizonLength, Vec2<int>(0, 0), Vec2<int>(4, 4), "Pronking"),
                                                                                     trotting(horizonLength, Vec2<int>(0, 5), Vec2<int>(5, 5), "Trotting"),
-                                                                                    bounding(horizonLength, Vec2<int>(5, 0), Vec2<int>(5, 5), "Bounding"),
+                                                                                    bounding(horizonLength, Vec2<int>(0, 0), Vec2<int>(5, 5), "Bounding"),
                                                                                     walking(horizonLength, Vec2<int>(0, 5), Vec2<int>(5, 5), "Walking"),
                                                                                     pacing(horizonLength, Vec2<int>(0, 9), Vec2<int>(5, 5), "Pacing"),
                                                                                     standing(horizonLength, Vec2<int>(0, 0), Vec2<int>(10, 10), "Standing")
@@ -406,7 +407,7 @@ void ConvexMPCLocomotion::run(ControlFSMData &data)
   // load LCM leg swing gains
   Kp << 150, 0, 0,
       0, 150, 0,
-      0, 0, 200;
+      0, 0, 300;
   Kp_stance = 0* Kp;
 
   Kd << 3, 0, 0,
@@ -439,11 +440,11 @@ void ConvexMPCLocomotion::run(ControlFSMData &data)
   // }
   int *mpcTable = gait->mpc_gait();
   
-    // std::cout << "/////////  MPC Table:  /////////" <<std::endl;
-    // for(int i = 0; i<20; i++)
-    //   {
-    //   std::cout << mpcTable[i] <<std::endl;
-    //   }
+    std::cout << "/////////  MPC Table:  /////////" <<std::endl;
+    for(int i = 0; i<20; i++)
+      {
+      std::cout << mpcTable[i] <<std::endl;
+      }
   
   
   updateMPCIfNeeded(mpcTable, data, omniMode);
@@ -498,7 +499,7 @@ void ConvexMPCLocomotion::run(ControlFSMData &data)
       if (foot == 0){
         side = -1.0;
       }
-      double footHeight = 0.05;
+      double footHeight = 0.06;
       pDesFootWorld[0] = seResult.position[0] +
                       seResult.vWorld[0] * 0.50 * gait->_stance * dtMPC +
                        0.05 * (seResult.vWorld[0] - v_des_world[0]);
@@ -515,7 +516,7 @@ void ConvexMPCLocomotion::run(ControlFSMData &data)
       // vDesFootWorld[1] = seResult.vWorld[1];
 
       Vec3<double> hipHeightOffSet = {0,0,-0.126};
-      Vec3<double> hipWidthOffSet = {-0.02,side*0.06,0};
+      Vec3<double> hipWidthOffSet = {-0.025,side*0.07,0};
       Vec3<double> dummyPos = {0,0,0.55};
       
       Vec3<double> pDesLeg =  (pDesFootWorld - seResult.position) - hipHeightOffSet + hipWidthOffSet;
@@ -636,7 +637,7 @@ void ConvexMPCLocomotion::updateMPCIfNeeded(int *mpcTable, ControlFSMData &data,
   //  std::cout << "MPC iteration: ";
   //  std::cout << iterationCounter % iterationsBetweenMPC << std::endl;
   // data._legController->updateData();
-  if ((iterationCounter % 10) == 0)
+  if ((iterationCounter % 15) == 0)
   {
     // std::cout << "state est: ";
 
@@ -667,7 +668,8 @@ void ConvexMPCLocomotion::updateMPCIfNeeded(int *mpcTable, ControlFSMData &data,
     // double Q[12] = {80, 80, 10,   300, 300, 100,   .1, .1, 1,   .1, .5, 3}; // roll pitch yaw x y z droll dpitch dyaw dx dy dz
     
     // if (gaitNumber != 7) // with gait
-    double Q[12] = {90, 60, 40,   220, 200, 70,   .1, .1, .1,   1, 1, .1}; // roll pitch yaw x y z droll dpitch dyaw dx dy dz
+    // double Q[12] = {90, 60, 40,   220, 270, 100,   .1, .1, .1,   1, 1, 1}; // roll pitch yaw x y z droll dpitch dyaw dx dy dz
+    double Q[12] = {90, 60, 40,   220, 270, 100,   .1, .1, .1,   1, 1, 1}; // roll pitch yaw x y z droll dpitch dyaw dx dy dz
 
     // std::cout << "gait " << gaitNumber <<std::endl;
     // double Q[12] = {150, 50, 100,  700, 250, 350,  .5, .5, .5,  .5, .5, .5}; // roll pitch yaw x y z droll dpitch dyaw dx dy dz
@@ -720,15 +722,15 @@ void ConvexMPCLocomotion::updateMPCIfNeeded(int *mpcTable, ControlFSMData &data,
     // else
     //{
     // world_position_desired = seResult.position;
-    const double max_pos_error = 0.1;
+    const double max_pos_error = 0.2;
     double xStart = world_position_desired[0];
     double yStart = world_position_desired[1];
     // std::cout << "orig " << xStart << "  " << yStart << std::endl;
     // printf("orig \t%.6f\t%.6f\n", xStart, yStart);
     // printf("ref: \t%.6f\t%.6f\n", p[0], p[1]);
 
-    double yaw_des = v_des_world[1] * 10;
-    double height_add_des = v_des_world[0] * 0.75;
+    double yaw_des = v_des_robot[1] * 10;
+    double height_add_des = v_des_robot[0] * 0.75;
 
     if (gaitNumber != 7) //with gait
     {
@@ -761,31 +763,31 @@ void ConvexMPCLocomotion::updateMPCIfNeeded(int *mpcTable, ControlFSMData &data,
     //                           0};   // 11
     
     // if (gaitNumber == 7){ //standing
-    // double trajInitial[12] = {0,  // 0
-    //                           0,    // 1
-    //                           0 + v_des_world[1]*5,    // 2
-    //                           0,                                   // 3
-    //                           0,                                   // 4
-    //                           0.55 + v_des_world[0],   // 5
-    //                           0,                                        // 6
-    //                           0,                                        // 7
-    //                           0,  // 8
-    //                           0,                           // 9
-    //                           0,                           // 10
-    //                           0};                                       // 11
+    double trajInitial[12] = {0,  // 0
+                              0,    // 1
+                              0 + yaw_des,    // 2
+                              0,                                   // 3
+                              0,                                   // 4
+                              0.55 + height_add_des,   // 5
+                              0,                                        // 6
+                              0,                                        // 7
+                              0,  // 8
+                              0,                           // 9
+                              0,                           // 10
+                              0};                                       // 11
     // }
-    double trajInitial[12] = {0,   // 0
-                              0 + v_des_world[1]*5,   // 1
-                              0 ,   // 2
-                              0,   // 3
-                              0,   // 4
-                              0.55 + v_des_world[0]*1 , // 5
-                              0,   // 6
-                              0,   // 7
-                              0,   // 8
-                              0,   // 9
-                              0,   // 10
-                              0};
+    // double trajInitial[12] = {0,   // 0
+    //                           0 + v_des_world[1]*5,   // 1
+    //                           0 ,   // 2
+    //                           0,   // 3
+    //                           0,   // 4
+    //                           0.55 + v_des_world[0]*1 , // 5
+    //                           0,   // 6
+    //                           0,   // 7
+    //                           0,   // 8
+    //                           0,   // 9
+    //                           0,   // 10
+    //                           0};
 
     // if(climb){
     //   trajInitial[1] = ground_pitch;
@@ -822,34 +824,34 @@ void ConvexMPCLocomotion::updateMPCIfNeeded(int *mpcTable, ControlFSMData &data,
       for (int j = 0; j < 12; j++)
         trajAll[12 * i + j] = trajInitial[j];
 
-      if (gaitNumber != 7){
-      if(i == 0) // start at current position  TODO consider not doing this
-      {
-        trajAll[0] = seResult.rpy[0];
-        trajAll[1] = seResult.rpy[1];
-        trajAll[2] = seResult.rpy[2];
-        trajAll[3] = seResult.position[0];
-        trajAll[4] = seResult.position[1];
-        trajAll[5] = seResult.position[2];
-      }
-      else{
-      if (v_des_world[0] < 0.001 && v_des_world[0] > -0.001) {
-        trajAll[12*i + 3] = trajInitial[3] + i * dtMPC * v_des_world[0];
-        }
-        else{
-         trajAll[12*i + 3] = seResult.position[0] + i * dtMPC * v_des_world[0]; 
-        }
-        if (v_des_world[1] < 0.001 && v_des_world[1] > -0.001) {
-        trajAll[12*i + 4] = trajInitial[4] + i * dtMPC * v_des_world[1];
-        }
-        else{
-         trajAll[12*i + 4] = seResult.position[1] + i * dtMPC * v_des_world[1]; 
-        }
-        // trajAll[12*i + 4] = trajInitial[4] + i * dtMPC * v_des_world[1];
-        trajAll[12*i + 2] = stateCommand->data.stateDes[5] + i * dtMPC * stateCommand->data.stateDes[11];
-        //std::cout << "yaw traj" <<  trajAll[12*i + 2] << std::endl;
-      }
-      }
+      // if (gaitNumber != 7){
+      // if(i == 0) // start at current position  TODO consider not doing this
+      // {
+      //   trajAll[0] = seResult.rpy[0];
+      //   trajAll[1] = seResult.rpy[1];
+      //   trajAll[2] = seResult.rpy[2];
+      //   trajAll[3] = seResult.position[0];
+      //   trajAll[4] = seResult.position[1];
+      //   trajAll[5] = seResult.position[2];
+      // }
+      // else{
+      // if (v_des_world[0] < 0.001 && v_des_world[0] > -0.001) {
+      //   trajAll[12*i + 3] = trajInitial[3] + i * dtMPC * v_des_world[0];
+      //   }
+      //   else{
+      //    trajAll[12*i + 3] = seResult.position[0] + i * dtMPC * v_des_world[0]; 
+      //   }
+      //   if (v_des_world[1] < 0.001 && v_des_world[1] > -0.001) {
+      //   trajAll[12*i + 4] = trajInitial[4] + i * dtMPC * v_des_world[1];
+      //   }
+      //   else{
+      //    trajAll[12*i + 4] = seResult.position[1] + i * dtMPC * v_des_world[1]; 
+      //   }
+      //   // trajAll[12*i + 4] = trajInitial[4] + i * dtMPC * v_des_world[1];
+      //   trajAll[12*i + 2] = stateCommand->data.stateDes[5] + i * dtMPC * stateCommand->data.stateDes[11];
+      //   //std::cout << "yaw traj" <<  trajAll[12*i + 2] << std::endl;
+      // }
+      // }
       std::cout << "traj " << i << std::endl;
       for (int j = 0; j < 12; j++) {
         std::cout << trajAll[12 * i + j] << "  ";
@@ -888,9 +890,9 @@ void ConvexMPCLocomotion::updateMPCIfNeeded(int *mpcTable, ControlFSMData &data,
         GRF[axis] = get_solution(leg * 3 + axis);
         GRM[axis] = get_solution(leg * 3 + axis + 6);
       }
-      GRF_R = -ori::coordinateRotation(ori::CoordinateAxis::Z, seResult.rpy[2]) * GRF;
+      GRF_R = -coordinateRotation(CoordinateAxis::Z, seResult.rpy[2]) * GRF;
     
-      GRM_R = -ori::coordinateRotation(ori::CoordinateAxis::Z, seResult.rpy[2]) * GRM;
+      GRM_R = -coordinateRotation(CoordinateAxis::Z, seResult.rpy[2]) * GRM;
 
       for (int i = 0; i < 3; i++){
         f(i) = GRF_R(i);

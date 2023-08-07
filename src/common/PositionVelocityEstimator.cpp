@@ -230,10 +230,10 @@ void LinearKFPositionVelocityEstimator::run() {
       this->_stateEstimatorData.result->rBody *
       this->_stateEstimatorData.result->vWorld;
 
-  // std::cout << "T265 reading is" << std::endl;
-  // for (int i = 0; i < 6; i++){
-  //   std::cout << T265_pose[i] << std::endl;
-  // }
+  std::cout << "T265 reading is" << std::endl;
+  for (int i = 0; i < 6; i++){
+    std::cout << FSMState::T265_pose[i] << std::endl;
+  }
 
   this->_stateEstimatorData.result->position(0) = -FSMState::T265_pose[2];
   this->_stateEstimatorData.result->position(1) = -FSMState::T265_pose[0];

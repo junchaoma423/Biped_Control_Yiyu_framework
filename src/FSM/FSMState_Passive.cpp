@@ -22,20 +22,11 @@ void FSMState_Passive::run()
 {
     std::cout << "Current state is passive state" << std::endl;
     _data->_legController->updateData(_data->_lowState, offset); //Pass by reference?
+    _data->_stateEstimator->setContactPhase(contactphase);
     _data->_stateEstimator->run();
 
     joystick.pollEvents();
     state=joystick.getState();
-    xAxis = state.axes[0];
-    std::cout << "Axes x is " << xAxis << std::endl;
-
-    yAxis = state.axes[1];
-    std::cout << "Axes y is " << yAxis << std::endl;
-
-    // vx_command = -yAxis * 0.1;
-    // vy_command = -xAxis * 0;
-    // std::cout << "vx command is " << vx_command << std::endl;
-    // std::cout << "vy command is " << vy_command << std::endl;
 
     buttonA = state.buttons[0];
     buttonB = state.buttons[1];
@@ -52,22 +43,10 @@ void FSMState_Passive::run()
 
     for (int leg = 0; leg < 2; leg++)
     {
-    for (int i = 0; i< 5; i++){
-        corrected_angle << _data->_legController->data[leg].q(i) << " ";
-    }
-    }
-
-    for (int leg = 0; leg < 2; leg++)
-    {
-    for (int i = 0; i< 5; i++){
-        corrected_angle << _data->_legController->data[leg].qd(i) << " ";
-    }
-    }
-
-    std::cout << "Orientation is" << std::endl;
-    for (int i = 0; i < 4; i++) {
-        // se_xfb[i] = _data->_stateEstimator->getResult().orientation(i);
-        std::cout << _data->_stateEstimator->getResult().orientation(i) << std::endl;;
+        for (int i = 0; i< 5; i++){
+            corrected_angle << _data->_legController->data[leg].q(i) << " ";
+            corrected_angle << _data->_legController->data[leg].qd(i) << " ";
+        }
     }
 
     angle << std::endl;
@@ -89,7 +68,7 @@ FSMStateName FSMState_Passive::checkTransition()
 {
     if(_lowState->userCmd == UserCommand::L2_X){
         std::cout << "transition from passive to QPstand" << std::endl;
-        return FSMStateName::QPSTAND;
+        return FSMStateName::MPCSTAND;
     }
     else{
         return FSMStateName::PASSIVE;

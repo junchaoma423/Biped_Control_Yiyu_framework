@@ -101,8 +101,10 @@ BalanceController::BalanceController()
 
   tempSkewMatrix3.setZero();
   tempVector3.setZero();
+  // A_control.setZero();
 
   A_control.resize(6, 12);
+  A_control.setZero();
   b_control.resize(6, 1);
   b_control_Opt.resize(6, 1);
   S_control.resize(6, 6);
@@ -297,7 +299,7 @@ void BalanceController::solveQP_nonThreaded(double* xOpt) {
   // std::cout <<  "Kd_Base_pitch = " << Kd_Base_pitch << "\n";
   // std::cout <<  "Kd_Base_yaw = " << Kd_Base_yaw << "\n";
 
-  // std::cout << "S_control = " << S_control << "\n";
+  std::cout << "S_control = " << S_control << "\n";
 
   qp_controller_data.exit_flag = qp_exit_flag;
   qp_controller_data.nWSR = nWSR_qpOASES;
@@ -428,13 +430,19 @@ void BalanceController::update_A_control() {
   for (int i = 0; i < NUM_CONTACT_POINTS; i++) {
     A_control.block<3, 3>(0, 3 * i) << R_yaw_act.transpose();
 
+    std::cout << "R_yaw_act is " << std::endl;
+    // for (int i = 0; i < 3; i++){
+      std::cout << R_yaw_act << "  ";
+    // }
+    std::cout << "\n";
+
     tempVector3 <<  p_feet.col(i);
     crossMatrix(tempSkewMatrix3, tempVector3);
     A_control.block<3, 3>(3, 3 * i) <<  tempSkewMatrix3;
     A_control.block<1, 3>(4, 6+3 * i) << 0,1,0;
     A_control.block<1, 3>(5, 6+3 * i) << 0,0,1;
   }
-  //std::cout << "A_control: " << A_control << std::endl;
+  std::cout << "A_control: " << A_control << std::endl;
 
 }
 
@@ -667,18 +675,18 @@ bool BalanceController::getQPFinished() { return QPFinished; }
 
 void BalanceController::print_QPData() {
   std::cout << "\n\n";
- // std::cout << "\n\nH = ";
- // print_real_t(H_qpOASES, NUM_VARIABLES_QP, NUM_VARIABLES_QP);
+ std::cout << "\n\nH = ";
+ print_real_t(H_qpOASES, NUM_VARIABLES_QP, NUM_VARIABLES_QP);
   std::cout << "\n\nA = ";
   print_real_t(A_qpOASES, NUM_CONSTRAINTS_QP, NUM_VARIABLES_QP);
- // std::cout << "\n\ng = ";
- // print_real_t(g_qpOASES, NUM_VARIABLES_QP, 1);
- // std::cout << "\n\nlb = ";
- // print_real_t(lb_qpOASES, NUM_VARIABLES_QP, 1);
-  //std::cout << "\n\nub = ";
-  //print_real_t(ub_qpOASES, NUM_VARIABLES_QP, 1);
-  //std::cout << "\n\nlbA = ";
-  //print_real_t(lbA_qpOASES, NUM_CONSTRAINTS_QP, 1);
+ std::cout << "\n\ng = ";
+ print_real_t(g_qpOASES, NUM_VARIABLES_QP, 1);
+ std::cout << "\n\nlb = ";
+ print_real_t(lb_qpOASES, NUM_VARIABLES_QP, 1);
+  std::cout << "\n\nub = ";
+  print_real_t(ub_qpOASES, NUM_VARIABLES_QP, 1);
+  std::cout << "\n\nlbA = ";
+  print_real_t(lbA_qpOASES, NUM_CONSTRAINTS_QP, 1);
   std::cout << "\n\nubA = ";
   print_real_t(ubA_qpOASES, NUM_CONSTRAINTS_QP, 1);
 }

@@ -67,7 +67,7 @@ void FSMState_MPCStand::run()
     xAxis = state.axes[0];
     yAxis = state.axes[1];
     vx_command = -yAxis * 0.1;
-    vy_command = -xAxis * 0;
+    vy_command = -xAxis * 0.1;
     std::cout << "vx command is " << vx_command << std::endl;
     std::cout << "vy command is " << vy_command << std::endl;
 

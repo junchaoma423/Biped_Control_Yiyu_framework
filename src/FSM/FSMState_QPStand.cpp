@@ -82,8 +82,9 @@ void FSMState_QPStand::run()
 
     motionTime++;
     _data->_legController->updateData(_data->_lowState, offset);
-    _data->_stateEstimator->run();
     _data->_stateEstimator->setContactPhase(contactphase);
+    _data->_stateEstimator->run();
+    
     _data->_legController->zeroCommand();
 
     joystick.pollEvents();
@@ -173,11 +174,51 @@ void FSMState_QPStand::run()
     balanceController.set_wrench_weights(COM_weights_stance, Base_weights_stance);
     balanceController.set_PDgains(kpCOM, kdCOM, kpBase, kdBase);
     balanceController.set_desiredTrajectoryData(rpy, p_des, omegaDes, v_des);
+    std::cout << "rpy des is " << std::endl;
+    for (int i = 0; i < 3; i++){
+        std::cout << rpy[i] << "  ";
+    }
+    std::cout << "\n";
+
+    std::cout << "p_des is " << std::endl;
+    for (int i = 0; i < 3; i++){
+        std::cout << p_des[i] << "  ";
+    }
+    std::cout << "\n";
+
+    std::cout << "omega_des is " << std::endl;
+    for (int i = 0; i < 3; i++){
+        std::cout << omegaDes[i] << "  ";
+    }
+    std::cout << "\n";
+
+    std::cout << "v_des is " << std::endl;
+    for (int i = 0; i < 3; i++){
+        std::cout << v_des[i] << "  ";
+    }
+    std::cout << "\n";
+
     balanceController.SetContactData(contactStateScheduled, minForces, maxForces);
+    std::cout << "ContactStateScheduled is " << std::endl;
+    for (int i = 0; i < 2; i++){
+        std::cout << contactStateScheduled[i] << std::endl;
+    }
+    std::cout << "pFeet is " << std::endl;
+    for (int i = 0; i < 6; i++){
+        std::cout << pFeet[i] << std::endl;
+    }
+
     balanceController.updateProblemData(se_xfb, pFeet, p_des, p_act, v_des, v_act,
                                         O_err, _data->_stateEstimator->getResult().rpy(2));
-    // balanceController.print_QPData();
+    balanceController.print_QPData();
     balanceController.solveQP_nonThreaded(fOpt);
+
+    std::cout << "fopt is " << std::endl;
+    for (int i = 0; i < 12; i++){
+        std::cout << fOpt[i] << "  ";
+    }
+    std::cout << "\n";
+
 
     for (int i = 0; i < 13; i++){
         b_des << se_xfb[i] << " ";
@@ -265,6 +306,7 @@ void FSMState_QPStand::run()
     tau_est << std::endl;
     temperature<<std::endl;
     corrected_angle<<std::endl;
+    T265_pos<<std::endl;
 
     // control.PowerProtect(_lowCmd, _lowState, 10);
 }

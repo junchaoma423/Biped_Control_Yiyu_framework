@@ -215,11 +215,11 @@ void LegController::updateCommand(LowlevelCmd* cmd, double* offset, int motionTi
 
         std::cout << "This doesn't have output " << std::endl;
         // No Output (Comment out if running)
-        for (int i = 0; i < 12; i++){
-            cmd->motorCmd[i].tau = 0;
-            cmd->motorCmd[i].Kp = 0;
-            cmd->motorCmd[i].Kd = 0;
-        }
+        // for (int i = 0; i < 12; i++){
+        //     cmd->motorCmd[i].tau = 0;
+        //     cmd->motorCmd[i].Kp = 0;
+        //     cmd->motorCmd[i].Kd = 0;
+        // }
 
     }
 
