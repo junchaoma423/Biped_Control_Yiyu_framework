@@ -56,13 +56,11 @@ CMAKE_BINARY_DIR = /home/junchao/Biped_Control_Yiyu_framework/build
 all: CMakeFiles/quad_ctrl.dir/all
 all: CMakeFiles/src.dir/all
 all: third_party/qpOASES/all
-all: third_party/JCQP/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: third_party/qpOASES/preinstall
-preinstall: third_party/JCQP/preinstall
 
 .PHONY : preinstall
 
@@ -70,27 +68,8 @@ preinstall: third_party/JCQP/preinstall
 clean: CMakeFiles/quad_ctrl.dir/clean
 clean: CMakeFiles/src.dir/clean
 clean: third_party/qpOASES/clean
-clean: third_party/JCQP/clean
 
 .PHONY : clean
-
-#=============================================================================
-# Directory level rules for directory third_party/JCQP
-
-# Recursive "all" directory target.
-third_party/JCQP/all: third_party/JCQP/CMakeFiles/JCQP.dir/all
-
-.PHONY : third_party/JCQP/all
-
-# Recursive "preinstall" directory target.
-third_party/JCQP/preinstall:
-
-.PHONY : third_party/JCQP/preinstall
-
-# Recursive "clean" directory target.
-third_party/JCQP/clean: third_party/JCQP/CMakeFiles/JCQP.dir/clean
-
-.PHONY : third_party/JCQP/clean
 
 #=============================================================================
 # Directory level rules for directory third_party/qpOASES
@@ -116,15 +95,14 @@ third_party/qpOASES/clean: third_party/qpOASES/CMakeFiles/qpOASES.dir/clean
 # All Build rule for target.
 CMakeFiles/quad_ctrl.dir/all: CMakeFiles/src.dir/all
 CMakeFiles/quad_ctrl.dir/all: third_party/qpOASES/CMakeFiles/qpOASES.dir/all
-CMakeFiles/quad_ctrl.dir/all: third_party/JCQP/CMakeFiles/JCQP.dir/all
 	$(MAKE) -f CMakeFiles/quad_ctrl.dir/build.make CMakeFiles/quad_ctrl.dir/depend
 	$(MAKE) -f CMakeFiles/quad_ctrl.dir/build.make CMakeFiles/quad_ctrl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles --progress-num=39,40 "Built target quad_ctrl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles --progress-num=20,21 "Built target quad_ctrl"
 .PHONY : CMakeFiles/quad_ctrl.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/quad_ctrl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles 62
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles 43
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/quad_ctrl.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles 0
 .PHONY : CMakeFiles/quad_ctrl.dir/rule
@@ -146,7 +124,7 @@ CMakeFiles/quad_ctrl.dir/clean:
 CMakeFiles/src.dir/all:
 	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/depend
 	$(MAKE) -f CMakeFiles/src.dir/build.make CMakeFiles/src.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles --progress-num=41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62 "Built target src"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles --progress-num=22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43 "Built target src"
 .PHONY : CMakeFiles/src.dir/all
 
 # Build rule for subdir invocation for target.
@@ -173,7 +151,7 @@ CMakeFiles/src.dir/clean:
 third_party/qpOASES/CMakeFiles/qpOASES.dir/all:
 	$(MAKE) -f third_party/qpOASES/CMakeFiles/qpOASES.dir/build.make third_party/qpOASES/CMakeFiles/qpOASES.dir/depend
 	$(MAKE) -f third_party/qpOASES/CMakeFiles/qpOASES.dir/build.make third_party/qpOASES/CMakeFiles/qpOASES.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles --progress-num=20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38 "Built target qpOASES"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 "Built target qpOASES"
 .PHONY : third_party/qpOASES/CMakeFiles/qpOASES.dir/all
 
 # Build rule for subdir invocation for target.
@@ -192,33 +170,6 @@ qpOASES: third_party/qpOASES/CMakeFiles/qpOASES.dir/rule
 third_party/qpOASES/CMakeFiles/qpOASES.dir/clean:
 	$(MAKE) -f third_party/qpOASES/CMakeFiles/qpOASES.dir/build.make third_party/qpOASES/CMakeFiles/qpOASES.dir/clean
 .PHONY : third_party/qpOASES/CMakeFiles/qpOASES.dir/clean
-
-#=============================================================================
-# Target rules for target third_party/JCQP/CMakeFiles/JCQP.dir
-
-# All Build rule for target.
-third_party/JCQP/CMakeFiles/JCQP.dir/all:
-	$(MAKE) -f third_party/JCQP/CMakeFiles/JCQP.dir/build.make third_party/JCQP/CMakeFiles/JCQP.dir/depend
-	$(MAKE) -f third_party/JCQP/CMakeFiles/JCQP.dir/build.make third_party/JCQP/CMakeFiles/JCQP.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 "Built target JCQP"
-.PHONY : third_party/JCQP/CMakeFiles/JCQP.dir/all
-
-# Build rule for subdir invocation for target.
-third_party/JCQP/CMakeFiles/JCQP.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles 19
-	$(MAKE) -f CMakeFiles/Makefile2 third_party/JCQP/CMakeFiles/JCQP.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles 0
-.PHONY : third_party/JCQP/CMakeFiles/JCQP.dir/rule
-
-# Convenience name for target.
-JCQP: third_party/JCQP/CMakeFiles/JCQP.dir/rule
-
-.PHONY : JCQP
-
-# clean rule for target.
-third_party/JCQP/CMakeFiles/JCQP.dir/clean:
-	$(MAKE) -f third_party/JCQP/CMakeFiles/JCQP.dir/build.make third_party/JCQP/CMakeFiles/JCQP.dir/clean
-.PHONY : third_party/JCQP/CMakeFiles/JCQP.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

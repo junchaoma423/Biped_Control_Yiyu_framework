@@ -11,7 +11,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.16.3/CMakeCCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
-  "../third_party/JCQP/CMakeLists.txt"
   "../third_party/qpOASES/CMakeLists.txt"
   "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config.cmake"
   "/usr/local/lib/cmake/realsense2/realsense2Config.cmake"
@@ -49,7 +48,6 @@ set(CMAKE_MAKEFILE_OUTPUTS
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "third_party/qpOASES/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "third_party/JCQP/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -57,5 +55,4 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/quad_ctrl.dir/DependInfo.cmake"
   "CMakeFiles/src.dir/DependInfo.cmake"
   "third_party/qpOASES/CMakeFiles/qpOASES.dir/DependInfo.cmake"
-  "third_party/JCQP/CMakeFiles/JCQP.dir/DependInfo.cmake"
   )

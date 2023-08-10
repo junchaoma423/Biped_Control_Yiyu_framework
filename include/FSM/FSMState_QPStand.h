@@ -17,7 +17,7 @@ class FSMState_QPStand: public FSMState
         FSMStateName checkTransition();
 
     private:
-        bool runMPC = false;
+        BalanceController balanceController;
 
         // QP Data
         double init_yaw;
@@ -41,6 +41,13 @@ class FSMState_QPStand: public FSMState
         double omegaDes[3] = {0};
         double se_xfb[13] = {0};
         double b_control[6] = {0};
+
+        Vec3<double> pFeetVecCOM;
+        double fOpt[12];
+        Vec3<double> fOptR;
+        Vec3<double> fOptO;
+        Vec3<double> mOptR;
+        Vec3<double> mOptO;
 
 };
 

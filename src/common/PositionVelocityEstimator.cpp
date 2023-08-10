@@ -237,7 +237,7 @@ void LinearKFPositionVelocityEstimator::run() {
 
   this->_stateEstimatorData.result->position(0) = -FSMState::T265_pose[2];
   this->_stateEstimatorData.result->position(1) = -FSMState::T265_pose[0];
-  // this->_stateEstimatorData.result->position(2) = 0.525 + T265_pose[1];
+  this->_stateEstimatorData.result->position(2) = 0.5 + FSMState::T265_pose[1];
 
   this->_stateEstimatorData.result->position = 
     this->_stateEstimatorData.result->rBody.transpose()*

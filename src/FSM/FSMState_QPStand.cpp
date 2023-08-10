@@ -2,23 +2,16 @@
 
 FSMState_QPStand::FSMState_QPStand(ControlFSMData *data)
                  :FSMState(data, FSMStateName::QPSTAND, "QPStand")
-{
-
-}
+{}
 
 void FSMState_QPStand::enter()
 {   
-    // cfg.enable_stream(RS2_STREAM_POSE, RS2_FORMAT_6DOF);
-    // pipe.start(cfg);
-
     _data->_interface->zeroCmdPanel();
     _data->_legController->zeroCommand();
     _data->_legController->updateData(_data->_lowState, offset);
     _data->_stateEstimator->run();
 
     init_yaw = _data->_stateEstimator->getResult().rpy(2);
-
-    // std::cout << "Init yaw in start is " << init_yaw << std::endl;
 
     for(int i = 0; i < 3; i++){
       v_des[i] = 0;
@@ -33,23 +26,23 @@ void FSMState_QPStand::enter()
     //set COM command
     p_des[0] = 0;
     p_des[1] = 0;
-    p_des[2] = 0.5;
+    p_des[2] = 0.55;
 
     // Set the Translational Gains
-    kpCOM[0] = 50;
-    kpCOM[1] = 50;
-    kpCOM[2] = 200;
-    kdCOM[0] = 1;
-    kdCOM[1] = 1;
-    kdCOM[2] = 2;
+    kpCOM[0] = 30;
+    kpCOM[1] = 30;
+    kpCOM[2] = 50;
+    kdCOM[0] = 0.1;
+    kdCOM[1] = 0.1;
+    kdCOM[2] = 0.1;
 
     // Set the Orientational Gains
-    kpBase[0] = 20;
-    kpBase[1] = 50;
-    kpBase[2] = 30;
-    kdBase[0] = 1;
-    kdBase[1] = 2;
-    kdBase[2] = 1;
+    kpBase[0] = 25;
+    kpBase[1] = 25;
+    kpBase[2] = 10;
+    kdBase[0] = 0.1;
+    kdBase[1] = 0.1;
+    kdBase[2] = 0.1;
     // abort();
 }
 
@@ -61,6 +54,7 @@ T1 invNormalize(const T0 value, const T1 min, const T2 max, const double minLim 
 
 void FSMState_QPStand::run()
 {
+    motionTime++;
     std::cout << "Current state is qpstand state" << std::endl;
     try {
         pd = get_pose_data(pipe);
@@ -68,9 +62,6 @@ void FSMState_QPStand::run()
         std::cerr << "RealSense error calling " << e.get_failed_function() << "(" << e.get_failed_args() << "):\n    " << e.what() << std::endl;
         return; // or handle the error appropriately
     }
-    // T265_x = pd.x;
-    // T265_y = pd.y;
-    // T265_z = pd.z;
     T265_pose[0] = pd.x;
     T265_pose[1] = pd.y;
     T265_pose[2] = pd.z;
@@ -80,25 +71,10 @@ void FSMState_QPStand::run()
     
     T265_pos << -T265_pose[2] << "  " << -T265_pose[0] << " " << T265_pose[1] << "  " << -T265_pose[5] << " " << -T265_pose[3] << " " << T265_pose[4];
 
-    motionTime++;
-    _data->_legController->updateData(_data->_lowState, offset);
-    _data->_stateEstimator->setContactPhase(contactphase);
-    _data->_stateEstimator->run();
-    
-    _data->_legController->zeroCommand();
-
     joystick.pollEvents();
     state=joystick.getState();
     xAxis = state.axes[0];
-    std::cout << "Axes x is " << xAxis << std::endl;
-
     yAxis = state.axes[1];
-    std::cout << "Axes y is " << yAxis << std::endl;
-
-    // vx_command = -yAxis * 0.1;
-    // vy_command = -xAxis * 0;
-    // std::cout << "vx command is " << vx_command << std::endl;
-    // std::cout << "vy command is " << vy_command << std::endl;
 
     buttonA = state.buttons[0];
     buttonB = state.buttons[1];
@@ -108,42 +84,43 @@ void FSMState_QPStand::run()
         abort();
     }
 
-    if (!Calibration){
-        //Angle Constraints
-        if (motionTime > 5){
-        //Thigh Constraint
-        for (int leg = 0; leg < 2; leg++){
-            if ((_data->_legController->data[leg].q(2) < Thigh_Constraint[0]) || 
-            (_data->_legController->data[leg].q(2) > Thigh_Constraint[1])) {
-                std::cout << "Thigh Angle Exceeded" << std::endl;
-                abort();
-            }
-        }
+    _data->_legController->updateData(_data->_lowState, offset);
+    _data->_stateEstimator->setContactPhase(contactphase);
+    _data->_stateEstimator->run();
 
-        //Calf Constraint
-        for (int leg = 0; leg < 2; leg++){
-            if ((_data->_legController->data[leg].q(3) < Calf_Constraint[0]) || 
-            (_data->_legController->data[leg].q(3) > Calf_Constraint[1])) {
-                std::cout << "Calf Angle Exceeded" << std::endl;
-                abort();
-            }
-        }
-
-        //Ankle Constraint
-        for (int leg = 0; leg < 2; leg++){
-            if ((_data->_legController->data[leg].q(4) < Ankle_Constraint[0]) || 
-            (_data->_legController->data[leg].q(4) > Ankle_Constraint[1])) {
-                std::cout << "Ankle Angle Exceeded" << std::endl;
-                abort();
-            }
-        }
-
-        //Pitch Constraint
-        if ((_data->_stateEstimator->getResult().rpy(1)) < -0.3){
-            std::cout << "Pitch Angle Exceeded" << std::endl;
+    if (motionTime > 5){
+    //Thigh Constraint
+    for (int leg = 0; leg < 2; leg++){
+        if ((_data->_legController->data[leg].q(2) < Thigh_Constraint[0]) || 
+        (_data->_legController->data[leg].q(2) > Thigh_Constraint[1])) {
+            std::cout << "Thigh Angle Exceeded" << std::endl;
             abort();
         }
+    }
+
+    //Calf Constraint
+    for (int leg = 0; leg < 2; leg++){
+        if ((_data->_legController->data[leg].q(3) < Calf_Constraint[0]) || 
+        (_data->_legController->data[leg].q(3) > Calf_Constraint[1])) {
+            std::cout << "Calf Angle Exceeded" << std::endl;
+            abort();
         }
+    }
+
+    //Ankle Constraint
+    for (int leg = 0; leg < 2; leg++){
+        if ((_data->_legController->data[leg].q(4) < Ankle_Constraint[0]) || 
+        (_data->_legController->data[leg].q(4) > Ankle_Constraint[1])) {
+            std::cout << "Ankle Angle Exceeded" << std::endl;
+            abort();
+        }
+    }
+
+    //Pitch Constraint
+    if ((_data->_stateEstimator->getResult().rpy(1)) < -0.3){
+        std::cout << "Pitch Angle Exceeded" << std::endl;
+        abort();
+    }
     }
     
         
@@ -174,50 +151,18 @@ void FSMState_QPStand::run()
     balanceController.set_wrench_weights(COM_weights_stance, Base_weights_stance);
     balanceController.set_PDgains(kpCOM, kdCOM, kpBase, kdBase);
     balanceController.set_desiredTrajectoryData(rpy, p_des, omegaDes, v_des);
-    std::cout << "rpy des is " << std::endl;
-    for (int i = 0; i < 3; i++){
-        std::cout << rpy[i] << "  ";
-    }
-    std::cout << "\n";
-
-    std::cout << "p_des is " << std::endl;
-    for (int i = 0; i < 3; i++){
-        std::cout << p_des[i] << "  ";
-    }
-    std::cout << "\n";
-
-    std::cout << "omega_des is " << std::endl;
-    for (int i = 0; i < 3; i++){
-        std::cout << omegaDes[i] << "  ";
-    }
-    std::cout << "\n";
-
-    std::cout << "v_des is " << std::endl;
-    for (int i = 0; i < 3; i++){
-        std::cout << v_des[i] << "  ";
-    }
-    std::cout << "\n";
-
     balanceController.SetContactData(contactStateScheduled, minForces, maxForces);
-    std::cout << "ContactStateScheduled is " << std::endl;
-    for (int i = 0; i < 2; i++){
-        std::cout << contactStateScheduled[i] << std::endl;
-    }
-    std::cout << "pFeet is " << std::endl;
-    for (int i = 0; i < 6; i++){
-        std::cout << pFeet[i] << std::endl;
-    }
 
     balanceController.updateProblemData(se_xfb, pFeet, p_des, p_act, v_des, v_act,
                                         O_err, _data->_stateEstimator->getResult().rpy(2));
-    balanceController.print_QPData();
+    // balanceController.print_QPData();
     balanceController.solveQP_nonThreaded(fOpt);
 
-    std::cout << "fopt is " << std::endl;
-    for (int i = 0; i < 12; i++){
-        std::cout << fOpt[i] << "  ";
-    }
-    std::cout << "\n";
+    // std::cout << "fopt is " << std::endl;
+    // for (int i = 0; i < 12; i++){
+    //     std::cout << fOpt[i] << "  ";
+    // }
+    // std::cout << "\n";
 
 
     for (int i = 0; i < 13; i++){
@@ -240,6 +185,9 @@ void FSMState_QPStand::run()
         _data->_legController->commands[leg].feedforwardForce = footFeedForwardForces.col(leg);
 
     }
+
+        //Push the Command to Leg Controller
+    _data->_legController->updateCommand(_data->_lowCmd, offset, motionTime);
         
     //Data Recording
 
@@ -281,9 +229,6 @@ void FSMState_QPStand::run()
         corrected_angle << _data->_legController->data[leg].qd(i) << " ";
     }
     }
-
-    //Push the Command to Leg Controller
-    _data->_legController->updateCommand(_data->_lowCmd, offset, motionTime);
 
     for (int i = 0; i < 12; i++){
     tau_est << _lowCmd->motorCmd[i].tau << "  ";

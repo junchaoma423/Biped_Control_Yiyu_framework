@@ -213,7 +213,7 @@ void LegController::updateCommand(LowlevelCmd* cmd, double* offset, int motionTi
             // commands[i].tau << 0, 0, 0, 0, 0; // zero torque command to prevent interference
         }
 
-        std::cout << "This doesn't have output " << std::endl;
+        // std::cout << "This doesn't have output " << std::endl;
         // No Output (Comment out if running)
         // for (int i = 0; i < 12; i++){
         //     cmd->motorCmd[i].tau = 0;

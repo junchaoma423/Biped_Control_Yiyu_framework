@@ -160,11 +160,11 @@ void ConvexMPCLocomotion::run(ControlFSMData &data)
   // data._stateEstimator->run();
   auto &seResult = data._stateEstimator->getResult();
   auto &stateCommand = data._desiredStateCommand;
-  // std::cout << "in side mpc" << seResult.rBody << std::endl;;
-  // std::cout << "T265 Reading: " << std::endl;
-  // std::cout << "x: " << seResult.position(0) << std::endl;
-  // std::cout << "y: " << seResult.position(1) << std::endl;
-  // std::cout << "z: " << seResult.position(2) << std::endl;
+  std::cout << "in side mpc" << seResult.rBody << std::endl;;
+  std::cout << "T265 Reading: " << std::endl;
+  std::cout << "x: " << seResult.position(0) << std::endl;
+  std::cout << "y: " << seResult.position(1) << std::endl;
+  std::cout << "z: " << seResult.position(2) << std::endl;
 
 
 
@@ -189,6 +189,10 @@ void ConvexMPCLocomotion::run(ControlFSMData &data)
   // Vec3<double> v_des_robot(stateCommand->data.stateDes[6], stateCommand->data.stateDes[7],0);
   Vec3<double> v_des_robot;
   Vec3<double> v_des_world;
+
+  // std::cout << "v_des_robot is " << v_des_robot << std::endl;
+  // std::cout << "v_des_world is " << v_des_world << std::endl;
+
   // v_des_world = coordinateRotation(CoordinateAxis::Z, seResult.rpy[2]).transpose() * v_des_robot;
   // Vec3<double> v_robot = coordinateRotation(CoordinateAxis::Z, seResult.rpy[2])*seResult.vWorld;
 
@@ -440,11 +444,11 @@ void ConvexMPCLocomotion::run(ControlFSMData &data)
   // }
   int *mpcTable = gait->mpc_gait();
   
-    std::cout << "/////////  MPC Table:  /////////" <<std::endl;
-    for(int i = 0; i<20; i++)
-      {
-      std::cout << mpcTable[i] <<std::endl;
-      }
+    // std::cout << "/////////  MPC Table:  /////////" <<std::endl;
+    // for(int i = 0; i<20; i++)
+    //   {
+    //   std::cout << mpcTable[i] <<std::endl;
+    //   }
   
   
   updateMPCIfNeeded(mpcTable, data, omniMode);
@@ -610,6 +614,8 @@ void ConvexMPCLocomotion::run(ControlFSMData &data)
       data._legController->commands[foot].kdtoe = 0;
 
       data._legController->commands[foot].feedforwardForce = f_ff[foot];
+      std::cout << "feedforwardforce saved" << std::endl;
+      
       // std::cout << "y: " << pDesLeg[1] << std::endl;
       // std::cout << "contact " << foot << " : \n" << contactState << std::endl;
       // std::cout << "foot force " << foot << " : \n " << data._legController->commands[foot].feedforwardForce(2) << std::endl;
@@ -637,7 +643,7 @@ void ConvexMPCLocomotion::updateMPCIfNeeded(int *mpcTable, ControlFSMData &data,
   //  std::cout << "MPC iteration: ";
   //  std::cout << iterationCounter % iterationsBetweenMPC << std::endl;
   // data._legController->updateData();
-  if ((iterationCounter % 15) == 0)
+  if ((iterationCounter % 10) == 0)
   {
     // std::cout << "state est: ";
 
@@ -665,11 +671,11 @@ void ConvexMPCLocomotion::updateMPCIfNeeded(int *mpcTable, ControlFSMData &data,
       r[i] = pFoot[i % 2][i / 2] - seResult.position[i / 2];
     }
     
-    // double Q[12] = {80, 80, 10,   300, 300, 100,   .1, .1, 1,   .1, .5, 3}; // roll pitch yaw x y z droll dpitch dyaw dx dy dz
+    double Q[12] = {80, 80, 40,   500, 500, 150,   .1, .1, 1,   .1, .1, .2}; // roll pitch yaw x y z droll dpitch dyaw dx dy dz
     
     // if (gaitNumber != 7) // with gait
     // double Q[12] = {90, 60, 40,   220, 270, 100,   .1, .1, .1,   1, 1, 1}; // roll pitch yaw x y z droll dpitch dyaw dx dy dz
-    double Q[12] = {90, 60, 40,   220, 270, 100,   .1, .1, .1,   1, 1, 1}; // roll pitch yaw x y z droll dpitch dyaw dx dy dz
+    // double Q[12] = {90, 60, 40,   350, 350, 100,   .1, .1, .1,   0.1, 0.5, 3}; // roll pitch yaw x y z droll dpitch dyaw dx dy dz
 
     // std::cout << "gait " << gaitNumber <<std::endl;
     // double Q[12] = {150, 50, 100,  700, 250, 350,  .5, .5, .5,  .5, .5, .5}; // roll pitch yaw x y z droll dpitch dyaw dx dy dz
@@ -701,6 +707,11 @@ void ConvexMPCLocomotion::updateMPCIfNeeded(int *mpcTable, ControlFSMData &data,
     // Vec3<double> v_des_world = coordinateRotation(CoordinateAxis::Z, seResult.rpy[2]).transpose() * v_des_robot;
 
     Vec3<double> v_des_world = seResult.rBody.transpose() * v_des_robot;
+
+    std::cout << "v_des_robot is " << v_des_robot << std::endl;
+    std::cout << "v_des_world is " << v_des_world << std::endl;
+
+    
     // v_des_world[0] = 0.1;
     // float trajInitial[12] = {0,0,0, 0,0,.25, 0,0,0,0,0,0};
 
@@ -743,8 +754,8 @@ void ConvexMPCLocomotion::updateMPCIfNeeded(int *mpcTable, ControlFSMData &data,
     world_position_desired[0] = xStart;
     world_position_desired[1] = yStart;
     
-    yaw_des = 0;
-    height_add_des = 0;
+    // yaw_des = 0;
+    // height_add_des = 0;
     }
     // printf("xys: \t%.3f\t%3.f\n", xStart, yStart);
     // printf("perr \t%.3f\t%.3f\n", p[0] - world_position_desired[0], p[1] - world_position_desired[1]);
@@ -901,7 +912,7 @@ void ConvexMPCLocomotion::updateMPCIfNeeded(int *mpcTable, ControlFSMData &data,
       f_ff[leg] = f;
       // f_ff[leg].setZero();
 
-      std::cout << f_ff[leg] << std::endl;
+      // std::cout << f_ff[leg] << std::endl;
       std::cout << "mpc solution" << leg << "\n" << f << std::endl;
       //  Update for WBC
       //  Fr_des[leg] = f;

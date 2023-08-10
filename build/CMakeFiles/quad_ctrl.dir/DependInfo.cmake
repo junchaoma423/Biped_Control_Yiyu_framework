@@ -21,7 +21,6 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles/src.dir/DependInfo.cmake"
   "/home/junchao/Biped_Control_Yiyu_framework/build/third_party/qpOASES/CMakeFiles/qpOASES.dir/DependInfo.cmake"
-  "/home/junchao/Biped_Control_Yiyu_framework/build/third_party/JCQP/CMakeFiles/JCQP.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

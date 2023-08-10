@@ -81,7 +81,6 @@ quad_ctrl: CMakeFiles/quad_ctrl.dir/src/main.cpp.o
 quad_ctrl: CMakeFiles/quad_ctrl.dir/build.make
 quad_ctrl: libsrc.a
 quad_ctrl: third_party/qpOASES/libs/libqpOASES.so.3.2
-quad_ctrl: third_party/JCQP/libJCQP.so
 quad_ctrl: CMakeFiles/quad_ctrl.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/junchao/Biped_Control_Yiyu_framework/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable quad_ctrl"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/quad_ctrl.dir/link.txt --verbose=$(VERBOSE)

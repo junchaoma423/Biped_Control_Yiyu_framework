@@ -214,12 +214,9 @@ CMakeFiles/src.dir/src/FSM/FSM.cpp.o
  /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/extras/SolutionAnalysis.hpp
  /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/extras/SolutionAnalysis.ipp
 CMakeFiles/src.dir/src/FSM/FSMState.cpp.o
- /home/junchao/Biped_Control_Yiyu_framework/BalanceController/BalanceController.hpp
- /home/junchao/Biped_Control_Yiyu_framework/ConvexMPC/ConvexMPCLocomotion.h
  /home/junchao/Biped_Control_Yiyu_framework/include/FSM/FSMState.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/ControlFSMData.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/DesiredCommand.h
- /home/junchao/Biped_Control_Yiyu_framework/include/common/FootSwingTrajectory.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/LegController.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/PoseData.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/Quadruped.h
@@ -241,38 +238,6 @@ CMakeFiles/src.dir/src/FSM/FSMState.cpp.o
  /home/junchao/Biped_Control_Yiyu_framework/include/sdk/include/udp.h
  /home/junchao/Biped_Control_Yiyu_framework/include/sdk/include/unitree_legged_sdk.h
  /home/junchao/Biped_Control_Yiyu_framework/src/FSM/FSMState.cpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Bounds.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Bounds.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Constants.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/ConstraintProduct.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Constraints.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Constraints.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Flipper.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Indexlist.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Indexlist.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/LapackBlasReplacement.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Matrices.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/MessageHandling.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/MessageHandling.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Options.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/QProblem.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/QProblem.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/QProblemB.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/QProblemB.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SQProblem.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SQProblem.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SQProblemSchur.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SQProblemSchur.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SparseSolver.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SubjectTo.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SubjectTo.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Types.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Utils.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Utils.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/extras/OQPinterface.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/extras/SolutionAnalysis.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/extras/SolutionAnalysis.ipp
 CMakeFiles/src.dir/src/FSM/FSMState_MPCStand.cpp.o
  /home/junchao/Biped_Control_Yiyu_framework/BalanceController/BalanceController.hpp
  /home/junchao/Biped_Control_Yiyu_framework/ConvexMPC/ConvexMPCLocomotion.h
@@ -336,13 +301,10 @@ CMakeFiles/src.dir/src/FSM/FSMState_MPCStand.cpp.o
  /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/extras/SolutionAnalysis.hpp
  /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/extras/SolutionAnalysis.ipp
 CMakeFiles/src.dir/src/FSM/FSMState_Passive.cpp.o
- /home/junchao/Biped_Control_Yiyu_framework/BalanceController/BalanceController.hpp
- /home/junchao/Biped_Control_Yiyu_framework/ConvexMPC/ConvexMPCLocomotion.h
  /home/junchao/Biped_Control_Yiyu_framework/include/FSM/FSMState.h
  /home/junchao/Biped_Control_Yiyu_framework/include/FSM/FSMState_Passive.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/ControlFSMData.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/DesiredCommand.h
- /home/junchao/Biped_Control_Yiyu_framework/include/common/FootSwingTrajectory.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/LegController.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/PoseData.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/Quadruped.h
@@ -364,46 +326,12 @@ CMakeFiles/src.dir/src/FSM/FSMState_Passive.cpp.o
  /home/junchao/Biped_Control_Yiyu_framework/include/sdk/include/udp.h
  /home/junchao/Biped_Control_Yiyu_framework/include/sdk/include/unitree_legged_sdk.h
  /home/junchao/Biped_Control_Yiyu_framework/src/FSM/FSMState_Passive.cpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Bounds.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Bounds.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Constants.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/ConstraintProduct.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Constraints.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Constraints.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Flipper.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Indexlist.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Indexlist.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/LapackBlasReplacement.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Matrices.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/MessageHandling.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/MessageHandling.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Options.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/QProblem.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/QProblem.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/QProblemB.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/QProblemB.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SQProblem.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SQProblem.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SQProblemSchur.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SQProblemSchur.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SparseSolver.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SubjectTo.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SubjectTo.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Types.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Utils.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Utils.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/extras/OQPinterface.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/extras/SolutionAnalysis.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/extras/SolutionAnalysis.ipp
 CMakeFiles/src.dir/src/FSM/FSMState_QPStand.cpp.o
  /home/junchao/Biped_Control_Yiyu_framework/BalanceController/BalanceController.hpp
- /home/junchao/Biped_Control_Yiyu_framework/ConvexMPC/ConvexMPCLocomotion.h
  /home/junchao/Biped_Control_Yiyu_framework/include/FSM/FSMState.h
  /home/junchao/Biped_Control_Yiyu_framework/include/FSM/FSMState_QPStand.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/ControlFSMData.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/DesiredCommand.h
- /home/junchao/Biped_Control_Yiyu_framework/include/common/FootSwingTrajectory.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/LegController.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/PoseData.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/Quadruped.h
@@ -509,12 +437,9 @@ CMakeFiles/src.dir/src/common/PoseData.cpp.o
  /home/junchao/Biped_Control_Yiyu_framework/include/common/PoseData.h
  /home/junchao/Biped_Control_Yiyu_framework/src/common/PoseData.cpp
 CMakeFiles/src.dir/src/common/PositionVelocityEstimator.cpp.o
- /home/junchao/Biped_Control_Yiyu_framework/BalanceController/BalanceController.hpp
- /home/junchao/Biped_Control_Yiyu_framework/ConvexMPC/ConvexMPCLocomotion.h
  /home/junchao/Biped_Control_Yiyu_framework/include/FSM/FSMState.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/ControlFSMData.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/DesiredCommand.h
- /home/junchao/Biped_Control_Yiyu_framework/include/common/FootSwingTrajectory.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/LegController.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/PoseData.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/PositionVelocityEstimator.h
@@ -537,38 +462,6 @@ CMakeFiles/src.dir/src/common/PositionVelocityEstimator.cpp.o
  /home/junchao/Biped_Control_Yiyu_framework/include/sdk/include/udp.h
  /home/junchao/Biped_Control_Yiyu_framework/include/sdk/include/unitree_legged_sdk.h
  /home/junchao/Biped_Control_Yiyu_framework/src/common/PositionVelocityEstimator.cpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Bounds.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Bounds.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Constants.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/ConstraintProduct.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Constraints.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Constraints.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Flipper.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Indexlist.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Indexlist.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/LapackBlasReplacement.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Matrices.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/MessageHandling.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/MessageHandling.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Options.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/QProblem.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/QProblem.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/QProblemB.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/QProblemB.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SQProblem.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SQProblem.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SQProblemSchur.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SQProblemSchur.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SparseSolver.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SubjectTo.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/SubjectTo.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Types.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Utils.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Utils.ipp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/extras/OQPinterface.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/extras/SolutionAnalysis.hpp
- /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/extras/SolutionAnalysis.ipp
 CMakeFiles/src.dir/src/interface/IOSDK.cpp.o
  /home/junchao/Biped_Control_Yiyu_framework/include/common/cTypes.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/cppTypes.h

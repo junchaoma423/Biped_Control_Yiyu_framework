@@ -14,8 +14,8 @@
 #include "../../include/common/PoseData.h"
 #include "../interface/Joystick.h"
 #include "../sdk/include/safety.h"
-#include "../../BalanceController/BalanceController.hpp"
-#include "../../ConvexMPC/ConvexMPCLocomotion.h"
+// #include "../../BalanceController/BalanceController.hpp"
+// #include "../../ConvexMPC/ConvexMPCLocomotion.h"
 
 class FSMState
 {
@@ -31,7 +31,7 @@ class FSMState
         std::string _stateNameStr;
 
         // Higher level Robot body controllers
-        BalanceController balanceController;
+        // BalanceController balanceController;
         static float T265_pose[6];
 
         static bool rs2_initialized;
@@ -46,9 +46,9 @@ class FSMState
     protected:
 
         // Holds all off the relevant control data
-        UNITREE_LEGGED_SDK::Safety control;
+        // UNITREE_LEGGED_SDK::Safety control;
 
-        ConvexMPCLocomotion Cmpc;
+        // ConvexMPCLocomotion Cmpc;
         
         ControlFSMData *_data;
         FSMStateName _nextStateName;
@@ -83,17 +83,17 @@ class FSMState
 
 
         // Desired States
-        double roll = 0;
-        double pitch = 0;
-        double yaw_rate = 0;
+        // double roll = 0;
+        // double pitch = 0;
+        // double yaw_rate = 0;
 
 
         //Data Recording
-        Vec6<double> pFeetDes;
+        // Vec6<double> pFeetDes;
 
-        double fOpt[12];
+        // double fOpt[12];
 
-        bool Calibration = true;
+        // bool Calibration = true;
 
         //Angle Constraint
         double Abad_Leg1_Constraint[2] = {-30 * (3.1415/180), 30 * (3.1415/180)};
@@ -104,11 +104,11 @@ class FSMState
         double Calf_Constraint[2] = {-150 * (3.1415/180), -30 * (3.1415/180)};
         double Ankle_Constraint[2] = {-10 * (3.1415/180), 95 * (3.1415/180)};
 
-        double init_yaw = 0;
-        double target_time = 10000;
+        // double init_yaw = 0;
+        // double target_time = 10000;
 
         //Actual and Desired Foot Position Vector Calculation
-        Vec3<double> pFeetVecCOM;
+        // Vec3<double> pFeetVecCOM;
 
         std::ofstream myfile;
         std::ofstream QP;
@@ -126,10 +126,10 @@ class FSMState
         std::ofstream corrected_angle;
         std::ofstream T265_pos;
 
-        Vec3<double> fOptR;
-        Vec3<double> fOptO;
-        Vec3<double> mOptR;
-        Vec3<double> mOptO;
+        // Vec3<double> fOptR;
+        // Vec3<double> fOptO;
+        // Vec3<double> mOptR;
+        // Vec3<double> mOptO;
 };
 
 #endif // FSMSTATE_H

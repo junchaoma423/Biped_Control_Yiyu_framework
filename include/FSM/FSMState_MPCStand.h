@@ -4,6 +4,7 @@
 #include "FSMState.h"
 #include "../../BalanceController/BalanceController.hpp"
 #include "../../ConvexMPC/convexMPC_interface.h"
+#include "../../ConvexMPC/ConvexMPCLocomotion.h"
 
 class FSMState_MPCStand: public FSMState
 {
@@ -16,6 +17,11 @@ class FSMState_MPCStand: public FSMState
         FSMStateName checkTransition();
 
     private:
+        ConvexMPCLocomotion Cmpc;
+        // Desired States
+        double roll = 0;
+        double pitch = 0;
+        double yaw_rate = 0;
         Vec3<double> v_command;
         double kpCOM[3], kdCOM[3], kpBase[3], kdBase[3];
         bool runQP = true;

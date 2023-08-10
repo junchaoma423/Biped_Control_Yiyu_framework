@@ -195,19 +195,6 @@ qpOASES/fast:
 	$(MAKE) -f third_party/qpOASES/CMakeFiles/qpOASES.dir/build.make third_party/qpOASES/CMakeFiles/qpOASES.dir/build
 .PHONY : qpOASES/fast
 
-#=============================================================================
-# Target rules for targets named JCQP
-
-# Build rule for target.
-JCQP: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 JCQP
-.PHONY : JCQP
-
-# fast build rule for target.
-JCQP/fast:
-	$(MAKE) -f third_party/JCQP/CMakeFiles/JCQP.dir/build.make third_party/JCQP/CMakeFiles/JCQP.dir/build
-.PHONY : JCQP/fast
-
 BalanceController/BalanceController.o: BalanceController/BalanceController.cpp.o
 
 .PHONY : BalanceController/BalanceController.o
@@ -817,7 +804,6 @@ help:
 	@echo "... install/local"
 	@echo "... src"
 	@echo "... qpOASES"
-	@echo "... JCQP"
 	@echo "... BalanceController/BalanceController.o"
 	@echo "... BalanceController/BalanceController.i"
 	@echo "... BalanceController/BalanceController.s"

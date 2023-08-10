@@ -68,7 +68,7 @@ FSMStateName FSMState_Passive::checkTransition()
 {
     if(_lowState->userCmd == UserCommand::L2_X){
         std::cout << "transition from passive to QPstand" << std::endl;
-        return FSMStateName::MPCSTAND;
+        return FSMStateName::QPSTAND;
     }
     else{
         return FSMStateName::PASSIVE;
