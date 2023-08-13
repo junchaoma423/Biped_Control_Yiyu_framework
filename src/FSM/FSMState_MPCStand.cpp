@@ -70,7 +70,7 @@ void FSMState_MPCStand::run()
     _data->_legController->updateData(_data->_lowState, offset);
 
         //Angle Constraints
-    if (motionTime > 5){
+    if (motionTime > 5000000){
         // Hip Constraint
         if ((_data->_legController->data[0].q(0) < Abad_Leg1_Constraint[0]) || 
           (_data->_legController->data[0].q(0) > Abad_Leg1_Constraint[1])) {
