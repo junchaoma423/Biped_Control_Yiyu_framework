@@ -88,7 +88,7 @@ void FSMState_QPStand::run()
     _data->_stateEstimator->setContactPhase(contactphase);
     _data->_stateEstimator->run();
 
-    if (motionTime > 5){
+    if (motionTime > 5000000){
     //Thigh Constraint
     for (int leg = 0; leg < 2; leg++){
         if ((_data->_legController->data[leg].q(2) < Thigh_Constraint[0]) || 
