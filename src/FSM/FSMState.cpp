@@ -1,7 +1,7 @@
 #include "../../include/FSM/FSMState.h"
 
 float FSMState::T265_pose[6] = {0, 0, 0, 0, 0, 0};
-bool FSMState::rs2_initialized = false;
+bool FSMState::rs2_initialized = true;
 rs2::pipeline FSMState::pipe;
 
 FSMState::FSMState(ControlFSMData *data, FSMStateName stateName, std::string stateNameStr):
