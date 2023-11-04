@@ -42,6 +42,8 @@ class FSMState
 
         double *Angle_Caliberation();
 
+        double* offset;
+
 
     protected:
 
@@ -59,7 +61,7 @@ class FSMState
 
         int motionTime = 0;
         double dt;
-        double* offset;
+        // double* offset;
         
         //Todo, add static, want to add to fsm.cpp so that run everytime
         Joystick joystick;

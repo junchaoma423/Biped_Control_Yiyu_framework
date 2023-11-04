@@ -110,7 +110,30 @@ CMakeFiles/src.dir/ConvexMPC/SolverMPC.cpp.o
  /home/junchao/Biped_Control_Yiyu_framework/ConvexMPC/SolverMPC.h
  /home/junchao/Biped_Control_Yiyu_framework/ConvexMPC/common_types.h
  /home/junchao/Biped_Control_Yiyu_framework/ConvexMPC/convexMPC_interface.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/FSM/FSMState.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/common/ControlFSMData.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/common/DesiredCommand.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/common/LegController.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/common/PoseData.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/common/Quadruped.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/common/StateEstimatorContainer.h
  /home/junchao/Biped_Control_Yiyu_framework/include/common/Utilities/Timer.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/common/cTypes.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/common/cppTypes.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/common/enumClass.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/interface/CmdPanel.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/interface/IOInterface.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/interface/Joystick.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/messages/LowLevelCmd.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/messages/LowlevelState.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/messages/unitree_joystick.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/sdk/include/comm.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/sdk/include/lcm.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/sdk/include/loop.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/sdk/include/quadruped.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/sdk/include/safety.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/sdk/include/udp.h
+ /home/junchao/Biped_Control_Yiyu_framework/include/sdk/include/unitree_legged_sdk.h
  /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES.hpp
  /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Bounds.hpp
  /home/junchao/Biped_Control_Yiyu_framework/third_party/qpOASES/include/qpOASES/Bounds.ipp
