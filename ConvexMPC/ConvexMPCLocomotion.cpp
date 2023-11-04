@@ -749,7 +749,8 @@ void ConvexMPCLocomotion::updateMPCIfNeeded(int *mpcTable, ControlFSMData &data,
     update_problem_data(p, v, q, w, r, yaw, weights, trajAll, Alpha_K, mpcTable);
     // t2.stopPrint("Run MPC");
     printf("MPC Solve time %f ms\n", t2.getMs());
-    // std::cout << t2.getSeconds() << std::endl;
+    std::cout << "MPC solve time " << std::endl;
+    std::cout << t2.getSeconds() << std::endl;
     for (int leg = 0; leg < 2; leg++)
     {
       Vec3<double> GRF;

@@ -41,13 +41,13 @@ void LegController::updateData(const LowlevelState* state, double* offset){
     int motor_sequence[10] = {1, 2, 9, 10, 11, 4, 5, 6, 7, 8};
     double gear_ratio = 1.5;
 
-    std::cout << "Raw data is " << std::endl;
-    for (int i = 0; i < 12; i++){
-        std::cout << state->motorState[i].q << "    ";
-    }
-    std::cout << "\n";
+    //std::cout << "Raw data is " << std::endl;
+    //for (int i = 0; i < 12; i++){
+    //    std::cout << state->motorState[i].q << "    ";
+    //}
+    //std::cout << "\n";
 
-    std::cout << "Checkpoint start updateData" << std::endl;
+    //std::cout << "Checkpoint start updateData" << std::endl;
     // Joint sequence reassignment
     for (int leg = 0; leg < 2; leg++){
         for(int j = 0; j<5; j++){
@@ -83,9 +83,9 @@ void LegController::updateData(const LowlevelState* state, double* offset){
         data[leg].q(4) = (data[leg].q(4)-data[leg].q(3));
 
         std::cout << "leg "<< leg<< " angle data: " << std::endl;
-        for(int j = 0; j<5; j++){
-            std::cout << data[leg].q(j)*180/3.1415 << "    ";
-        }
+        //for(int j = 0; j<5; j++){
+        //    std::cout << data[leg].q(j)*180/3.1415 << "    ";
+        //}
 
 
         computeLegJacobianAndPosition(_quadruped, data[leg].q,&(data[leg].J), &(data[leg].J2) ,&(data[leg].p),leg);
@@ -114,7 +114,7 @@ void LegController::updateCommand(LowlevelCmd* cmd, double* offset, int motionTi
 
         Vec6<double> footForce = commands[leg].feedforwardForce;
 
-        std::cout << "foot force is " << commands[leg].feedforwardForce << std::endl;
+        //std::cout << "foot force is " << commands[leg].feedforwardForce << std::endl;
         
         legTorque = (data[leg].J.transpose() * footForce)*zeroForceSwitch;
 
@@ -167,12 +167,12 @@ void LegController::updateCommand(LowlevelCmd* cmd, double* offset, int motionTi
         commands[leg].tau(3) = legTorque[3] * percent;
         commands[leg].tau(4) = legTorque[4] * percent;
 
-        std::cout << "Percent is " << percent << std::endl;
+        //std::cout << "Percent is " << percent << std::endl;
 
-        std::cout << "Leg torque "<<leg<<" is " << std::endl;
-        for (int i = 0; i < 5; i++){
-            std::cout << commands[leg].tau(i) << "  ";
-        }
+        //std::cout << "Leg torque "<<leg<<" is " << std::endl;
+        //for (int i = 0; i < 5; i++){
+        //    std::cout << commands[leg].tau(i) << "  ";
+        //}
 
 
         // Reassigning motor torque sequence (Only have torque control)
@@ -180,10 +180,10 @@ void LegController::updateCommand(LowlevelCmd* cmd, double* offset, int motionTi
         commands[leg].tau(4) = -commands[leg].tau(4);
 
         std::cout << "Leg torque command "<<leg<<" is " << std::endl;
-        for (int i = 0; i < 5; i++){
-            std::cout << commands[leg].tau(i) << "  ";
-        }
-        std::cout << "\n";
+        //for (int i = 0; i < 5; i++){
+        //    std::cout << commands[leg].tau(i) << "  ";
+        //}
+        //std::cout << "\n";
 
 
         if (leg == 1){

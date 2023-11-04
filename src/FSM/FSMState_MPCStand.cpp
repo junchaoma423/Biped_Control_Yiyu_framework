@@ -28,14 +28,14 @@ void FSMState_MPCStand::run()
 
     std::cout << "Current state is MPC " << std::endl;
 
-    pd = get_pose_data(pipe);
+    //pd = get_pose_data(pipe);
 
-    T265_pose[0] = pd.x;
-    T265_pose[1] = pd.y;
-    T265_pose[2] = pd.z;
-    T265_pose[3] = pd.x_vel;
-    T265_pose[4] = pd.y_vel;
-    T265_pose[5] = pd.z_vel;
+    //T265_pose[0] = pd.x;
+    //T265_pose[1] = pd.y;
+    //T265_pose[2] = pd.z;
+    //T265_pose[3] = pd.x_vel;
+    //T265_pose[4] = pd.y_vel;
+    //T265_pose[5] = pd.z_vel;
     
     T265_pos << -T265_pose[2] << "  " << -T265_pose[0] << " " << T265_pose[1] << "  " << -T265_pose[5] << " " << -T265_pose[3] << " " << T265_pose[4];
 
@@ -70,7 +70,7 @@ void FSMState_MPCStand::run()
     _data->_legController->updateData(_data->_lowState, offset);
 
         //Angle Constraints
-    if (motionTime > 5){
+    if (motionTime > 5000000){
         // Hip Constraint
         if ((_data->_legController->data[0].q(0) < Abad_Leg1_Constraint[0]) || 
           (_data->_legController->data[0].q(0) > Abad_Leg1_Constraint[1])) {
